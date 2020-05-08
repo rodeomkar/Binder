@@ -1,22 +1,18 @@
-import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:tmapp/listcomp.dart';
-import 'package:tmapp/userprofile.dart';
-import 'package:tmapp/Stats.dart';
-import 'package:tmapp/department.dart';
+import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:tmapp/productionoperator/listcompop.dart';
+import 'package:tmapp/productionoperator/userprofileop.dart';
 
-class First extends StatefulWidget {
+class Firstop extends StatefulWidget {
   @override
   _FirstState createState() => _FirstState();
 }
 
-class _FirstState extends State<First> {
+class _FirstState extends State<Firstop> {
   int _ci=0;
   final _page=[
-    HomePage(),
-    Depart(),
-    Stat(),
-    UserProfile(),
+    HomePageop(),
+    UserProfileop(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -28,11 +24,8 @@ class _FirstState extends State<First> {
         inactiveIconColor: Color(0xFF1465B0),
         tabs: [
           TabData(iconData: Icons.insert_comment, title: "Home", ),
-          TabData(iconData: Icons.account_balance, title: "Departments"),
-          TabData(iconData: Icons.timeline, title: "Statistics"),
           TabData(iconData: Icons.person, title: "Profile")
         ],
-
         onTabChangedListener: (int index){
           setState(() {
             _ci=index;

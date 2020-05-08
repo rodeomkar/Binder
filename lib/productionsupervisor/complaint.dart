@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/first.dart';
-import 'package:tmapp/listcomp.dart';
+import 'package:tmapp/productionsupervisor/first.dart';
+import 'package:tmapp/productionsupervisor/listcomp.dart';
 
 class ComaplintDetails extends StatefulWidget {
   @override

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/first.dart';
-import 'package:tmapp/resetpass.dart';
+import 'package:tmapp/productionoperator/firstop.dart';
+import 'package:tmapp/productionoperator/resetpassop.dart';
 
-class UserProfile extends StatefulWidget {
+class UserProfileop extends StatefulWidget {
   @override
   _UserProfileState createState() => _UserProfileState();
 }
 
-class _UserProfileState extends State<UserProfile> {
+class _UserProfileState extends State<UserProfileop> {
 
   //int ci=3;
   String _email;
@@ -16,13 +16,13 @@ class _UserProfileState extends State<UserProfile> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ResetPass()),
+      MaterialPageRoute(builder: (context) => ResetPassop()),
     );
   }
   Future<bool> _onBackPressed(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => First()),
+      MaterialPageRoute(builder: (context) => Firstop()),
     );
   }
   @override
@@ -64,7 +64,7 @@ class _UserProfileState extends State<UserProfile> {
                           borderSide: BorderSide(color: Color.fromRGBO(93, 153, 252,100)),
                         ),
                         enabledBorder:OutlineInputBorder(
-                          borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
+                            borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
                       ),
                     ),
@@ -74,7 +74,7 @@ class _UserProfileState extends State<UserProfile> {
                     TextField(
                       enabled: false,
                       decoration: InputDecoration(
-                          hintText: "Name",
+                        hintText: "Name",
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding:
@@ -93,7 +93,7 @@ class _UserProfileState extends State<UserProfile> {
                     TextField(
                       enabled: false,
                       decoration: InputDecoration(
-                          hintText: "Designation",
+                        hintText: "Designation",
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding:
@@ -111,7 +111,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     TextField(
                       decoration: InputDecoration(
-                          hintText: "Phone Number",
+                        hintText: "Phone Number",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
@@ -135,7 +135,7 @@ class _UserProfileState extends State<UserProfile> {
                     TextFormField(
                       autovalidate: true,
                       decoration: InputDecoration(
-                          hintText: "Email ID",
+                        hintText: "Email ID",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),

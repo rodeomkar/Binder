@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/userprofile.dart';
-import 'package:tmapp/password.dart';
+import 'package:tmapp/productionoperator/userprofileop.dart';
+import 'package:tmapp/productionoperator/passwordop.dart';
 
-class ResetPass extends StatefulWidget {
+class ResetPassop extends StatefulWidget {
   @override
   _ResetPassState createState() => _ResetPassState();
 }
 
-class _ResetPassState extends State<ResetPass> {
+class _ResetPassState extends State<ResetPassop> {
 
   goBackToPreviousScreen(BuildContext context){
 
@@ -45,7 +45,7 @@ class _ResetPassState extends State<ResetPass> {
                 SizedBox(
                   height: 20,
                 ),
-                PasswordField(
+                PasswordFieldop(
                   fieldKey: _passwordFieldKey,
                   hintText: 'Current Password',
                   onFieldSubmitted: (String value) {
@@ -57,7 +57,7 @@ class _ResetPassState extends State<ResetPass> {
                 SizedBox(
                   height: 20,
                 ),
-                PasswordField(
+                PasswordFieldop(
                   fieldKey: _passwordFieldKey1,
                   hintText: 'Enter New Password',
                   onFieldSubmitted: (String value) {
@@ -69,7 +69,7 @@ class _ResetPassState extends State<ResetPass> {
                 SizedBox(
                   height: 20,
                 ),
-                PasswordField(
+                PasswordFieldop(
                   fieldKey: _passwordFieldKey2,
                   hintText: 'Enter New Password',
                   onFieldSubmitted: (String value) {
@@ -107,17 +107,17 @@ class _ResetPassState extends State<ResetPass> {
                   width: 400,
                   height: 45,
                   child: OutlineButton(
-                    textColor: Color(0xFF1666f0),
-                    disabledTextColor: Colors.black,
-                    padding: EdgeInsets.all(8.0),
-                    splashColor: Colors.blueAccent,
-                    onPressed: () {
-                      goBackToPreviousScreen(context);
-                    },
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(fontSize: 15.0,color: Color(0xFF1467B3)),
-                    ),
+                      textColor: Color(0xFF1666f0),
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(8.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: () {
+                        goBackToPreviousScreen(context);
+                      },
+                      child: Text(
+                        "Cancel",
+                        style: TextStyle(fontSize: 15.0,color: Color(0xFF1467B3)),
+                      ),
                       color: Color(0xFF1467B3)
                   ),
                 ),

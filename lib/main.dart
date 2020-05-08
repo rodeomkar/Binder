@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/first.dart';
-import 'package:tmapp/solvecomplaint.dart';
+import 'package:tmapp/productionsupervisor/first.dart';
+import 'package:tmapp/productionsupervisor/solvecomplaint.dart';
 
 void main() => runApp(MyApp());
 
