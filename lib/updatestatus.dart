@@ -1,14 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tmapp/productionsupervisor/first.dart';
-import 'package:tmapp/productionsupervisor/listcomp.dart';
 
-class ComaplintDetails extends StatefulWidget {
+class UpdateStatus extends StatefulWidget {
   @override
   _ComaplintDetailsState createState() => _ComaplintDetailsState();
 }
 enum SingingCharacter { lafayette, jefferson }
-class _ComaplintDetailsState extends State<ComaplintDetails> {
-
+class _ComaplintDetailsState extends State<UpdateStatus> {
   SingingCharacter  _radioValue1= SingingCharacter.lafayette;
   @override
   Widget build(BuildContext context) {
@@ -20,10 +18,10 @@ class _ComaplintDetailsState extends State<ComaplintDetails> {
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back_ios),
             onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => First()),
-                );
+//                Navigator.push(
+//                  context,
+//                  MaterialPageRoute(builder: (context) => First()),
+//                );
             },
           ),
           title: Text("Logo",style: TextStyle(fontFamily: 'Roboto', color: Colors.white, fontSize: 30)),
@@ -35,7 +33,6 @@ class _ComaplintDetailsState extends State<ComaplintDetails> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 20,),
               Card(
                 margin: EdgeInsets.only(top: 10,left: 20,right: 20),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -110,8 +107,8 @@ class _ComaplintDetailsState extends State<ComaplintDetails> {
                   children: <Widget>[
                     Container(
                       alignment: Alignment.topLeft,
-                      padding: EdgeInsets.only(top: 20,left: 20),
-                      child: Text("Verify",style: TextStyle(fontFamily: 'Roboto', color: Color(0xFF1467B3), fontSize: 18,fontWeight: FontWeight.w500)),
+                      padding: EdgeInsets.all(20.0),
+                      child: Text("Update Status",style: TextStyle(fontFamily: 'Roboto', color: Color(0xFF1467B3), fontSize: 18,fontWeight: FontWeight.w500)),
                     ),
                     Row(
                       children: <Widget>[
@@ -130,27 +127,45 @@ class _ComaplintDetailsState extends State<ComaplintDetails> {
                           //onChanged: _handleRadioValueChange1,
                         ),
                         new Text(
-                          'Not Solved',
+                          'On going',
                           style: new TextStyle(
                             fontFamily: 'Roboto',
                             fontSize: 16.0,
                           ),
                         ),
+                        new Radio(
+                          value: 2,
+                          groupValue: _radioValue1,
+                          //onChanged: _handleRadioValueChange1,
+                        ),
+                        new Text(
+                          'Pending',
+                          style: new TextStyle(fontFamily: 'Roboto',fontSize: 16.0),
+                        ),
                       ],
                     ),
+                    Container(
+                      padding: EdgeInsets.only(left: 20,right: 20),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Remarks',
+
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10,),
                     Container(
                       //padding:EdgeInsets.only(top: 400,left:20,right: 20) ,
                       child:new SizedBox(
                         //width: double.infinity,
                         child: new RaisedButton(
-                          child: new Text("Verify",style: TextStyle(fontFamily: 'Roboto', color: Colors.white, fontSize: 16),textAlign: TextAlign.center,),
+                          child: new Text("Update",style: TextStyle(fontFamily: 'Roboto', color: Colors.white, fontSize: 16),textAlign: TextAlign.center,),
                           color: Color(0xFF1467B3),
                           onPressed:() {/** */} ,
                         ),
                       ),
 
                     ),
-                    SizedBox(height: 10,)
 
 
                   ],

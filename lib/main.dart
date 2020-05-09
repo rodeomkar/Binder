@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tmapp/productionsupervisor/first.dart';
 import 'package:tmapp/productionsupervisor/solvecomplaint.dart';
+import 'package:tmapp/productionoperator/firstop.dart';
+import 'package:tmapp/assignoperator.dart';
+import 'package:tmapp/whoareyou.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: First(),
+      home: Who(),
     );
   }
 }
