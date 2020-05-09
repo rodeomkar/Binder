@@ -32,7 +32,9 @@ class _UserProfileState extends State<UserProfileop> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF1467B3),
-          title: Center(child: Text('Logo')),
+          title: Image.asset('Logo/LogoWhite/logoFullWhite.png', fit: BoxFit.cover,height: 28),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
         body: SingleChildScrollView(
           child: Container(

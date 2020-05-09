@@ -31,8 +31,10 @@ class _UserProfileState extends State<UserProfile> {
       onWillPop: _onBackPressed,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
+          centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
-          title: Center(child: Text('Logo')),
+          title: Image.asset('Logo/LogoWhite/logoFullWhite.png', fit: BoxFit.cover,height: 28),
         ),
         body: SingleChildScrollView(
           child: Container(

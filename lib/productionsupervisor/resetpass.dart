@@ -26,7 +26,8 @@ class _ResetPassState extends State<ResetPass> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFF1467B3),
-        title: Center(child: Text('Logo')),
+        centerTitle: true,
+        title: Image.asset('Logo/LogoWhite/logoFullWhite.png', fit: BoxFit.cover,height: 28),
       ),
       body: Container(
         child: Padding(

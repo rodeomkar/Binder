@@ -62,7 +62,7 @@ class _DepartState extends State<Depart> with RouteAware{
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false, // hides leading widget
-          title: Text("Logo",style: TextStyle(fontFamily: 'Roboto', color: Colors.white, fontSize: 30)),
+          title: Image.asset('Logo/LogoWhite/logoFullWhite.png', fit: BoxFit.cover,height: 28),
           centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
 
