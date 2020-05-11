@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tmapp/productionsupervisor/first.dart';
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+
 
 class SearchPage extends StatefulWidget {
   @override
@@ -7,6 +9,112 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  GlobalKey<AutoCompleteTextFieldState<String>> key = new GlobalKey();
+  List<String> suggestions = [
+    "Up/Down movement not working",
+    "hoist movement jam",
+    "Hook/ Latch problem",
+    "Cable broken/short circuit",
+    "pendant broken",
+    "Fan not working",
+    "Rotation not working",
+    "Jali/ Guard/ Blade broken",
+    "Heavy Noise",
+    "Smoke from Motor",
+    "Temperature low",
+    "Auto cycle not working",
+    "Oil skimmer not working",
+    "filter paper end",
+    "Chip conveyor not working",
+    "job cleaning not proper",
+    "Heavy air leakge",
+    "Heavy coolant leakage",
+    "NG Burners/ heaters not working",
+    "Hose pipe burst",
+    "Lubriation oil level low",
+    "Loader/ unloader Not working",
+    "sensor/Limit switch problem",
+    "Rotary cage not working",
+    "Job fall down or stucked in machine",
+    "Gripper problem",
+    "Teaching required",
+    "Dashed on fixture ot machine",
+    "Collision error",
+    "Air leakakge",
+    "Sensor not working",
+    "Lubriation oil level low",
+    "Entry conveyor / tiler problem",
+    "Unloading conveyor/ tilter  problem",
+    "Robot in fault",
+    "Air leakakge",
+  "Oil Leakage",
+  "Pr. Switch issue",
+  "Cosmo Not working",
+  "proxy/limit switch problem",
+  "Hydr. Block cylinder leakage",
+  "Hydraulic oil low",
+  "Lub oil level low",
+  "Machine lamp not working",
+  "Pneumatic cylinder leakge",
+  "Fixture / entry/ Exit conveyor not working",
+  "Reading of test too high",
+  "ATC not working",
+  "APC not working",
+  "Probe battery low",
+  "Communication error",
+  "Coolant leakage",
+  "Oil Leakage",
+  "BTS problem",
+  "Tool Change not working",
+  "Chip conveyor not working",
+  "filter paper end",
+  "Hydraulic oil low",
+  "Oilmatic unit temp.high",
+  "Grease cartridge over",
+  "Lub oil level low",
+  "Air leakakge",
+  "Radiator cooling fan alarm",
+  "Socket fallen",
+  "Spindle alignment not proper",
+  "Pusher/ Clamping problem",
+  "Conveyor rotation/ up/down not working",
+  "Air leakakge",
+  "ASL up/ down not working",
+  "Sensor not working",
+  "Fault on controller",
+  "Marking shift problem",
+  "Marking not visible",
+  "Air leakakge",
+  "Conveyor not working",
+  "Machine lamp not working",
+  "Reed switch/sensor/ limit switch issue",
+  "GAP or pressing issue",
+  "Conveyor not working",
+  "Pusher and clamping issue",
+  "Servo position for presssing not ok",
+  "Reed switch/sensor/ limit switch issue",
+  "Hydraulic oil low",
+  "Temp low/ high - heating problem",
+  "IR tubes broken",
+  "Reed switch/sensor/ limit switch issue",
+  "heating chamber fans not working",
+  "Conveyor not working",
+  "Machine not working",
+  "Hoist not working",
+  "Fan not working",
+  "Electric short circuit",
+  "overload trip",
+  "Movement jam",
+  "Conveyor not working",
+  "Air leakakge",
+  "Oil Leakage"
+  "Coolant leakage",
+  "Job fallen"
+
+  ];
+  AutoCompleteTextField searchTextField;
+  bool loading = true;
+
   Future<bool> _onBackPressed(){
     Navigator.push(
       context,
@@ -83,20 +191,50 @@ class _SearchPageState extends State<SearchPage> {
                     SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        hintText: "Issue",
-                        hintStyle: TextStyle(color: Color(0xFF1467B3)),
-                        filled: true,
-                        fillColor: Color.fromRGBO(20, 103, 179, 0.05),
-                        contentPadding:
-                        const EdgeInsets.only(left: 14.0, bottom: 15.0, top: 15.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color.fromRGBO(93, 153, 252,100)),
+                    Container(
+                      height: 50,
+                      child: AutoCompleteTextField<String>(
+                        key: key,
+                        clearOnSubmit: false,
+                        suggestions: suggestions,
+                        //style: TextStyle(color: Colors.blue,fontSize: 14),
+                        decoration: InputDecoration(
+                          hintText: "Issue",
+                          hintStyle: TextStyle(color: Color(0xFF1467B3), fontSize: 16),
+                          filled: true,
+                          fillColor: Color.fromRGBO(20, 103, 179, 0.05),
+                          contentPadding:
+                          const EdgeInsets.only(left: 14.0, bottom: 15.0, top: 15.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color.fromRGBO(93, 153, 252,100)),
+                          ),
+                          enabledBorder:OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
+                          ),
                         ),
-                        enabledBorder:OutlineInputBorder(
-                            borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
-                        ),
+                        itemFilter: (item,query){
+                          return item.toLowerCase().startsWith(query.toLowerCase());
+                        },
+                        itemSorter: (a,b){
+                          return a.compareTo(b);
+                        },
+                        itemSubmitted: (item){
+                          setState(() {
+                            searchTextField.textField.controller.text = item;
+                          });
+
+                        },
+                        itemBuilder: (context,item){
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                item,style: TextStyle(fontSize: 18,color: Colors.black),
+                              ),
+                            ],
+                          );
+
+                        },
                       ),
                     ),
                     SizedBox(

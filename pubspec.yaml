@@ -25,6 +25,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   autocomplete_textfield: ^1.7.3
+  simple_animations: ^1.3.3
+  page_transition: ^1.1.4
+
+
 
 
 dev_dependencies:
@@ -47,6 +51,13 @@ flutter:
   assets:
     - Logo/LogoWhite/logoFullWhite.svg
     - Logo/LogoWhite/logoFullWhite.png
+    - assests/images/light-2.png
+    - assests/images/light-1.png
+    - assests/images/clock.png
+    - assests/images/background.png
+    - assests/images/mobileicon.png
+    - assests/images/otp.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

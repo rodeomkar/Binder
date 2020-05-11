@@ -14,6 +14,7 @@ class _StatState extends State<Stat> {
         backgroundColor: Color(0xFF1467B3),
         title: Image.asset('Logo/LogoWhite/logoFullWhite.png', fit: BoxFit.cover,height: 28),
       ),
+
     );
   }
 }
