@@ -98,7 +98,44 @@ class _ComaplintDetailsState extends State<ComaplintDetails> {
                           alignment: Alignment.topRight,
                           child: Text( "Department ",style: TextStyle(fontFamily: 'Roboto', color: Color(0x801467b3), fontSize: 14,fontWeight: FontWeight.w500)),
                         ),
+                        Container(
+                          margin: EdgeInsets.only(top: 370,left: 60,bottom: 20),
+                          alignment: Alignment.bottomLeft,
+                          child: InkWell(
+                            splashColor: Colors.blue.withAlpha(30),
+                            onTap: () {
+                              ////////
+                              print('Edit');
+                            },
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.edit,color: Color(0xFF1467B3)),
+                                Text( "  Edit ",style: TextStyle(fontFamily: 'Roboto', color: Color(0xFF1467B3), fontSize: 14,fontWeight: FontWeight.w500)),
 
+                              ],
+                            ),
+
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 370,left: 220,bottom: 20),
+                          alignment: Alignment.bottomRight,
+                          child: InkWell(
+                            splashColor: Colors.blue.withAlpha(30),
+                            onTap: () {
+                              ////////
+                              print('Delete');
+                            },
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.restore_from_trash,color: Color(0xFF1467B3)),
+                                Text( "  Delete ",style: TextStyle(fontFamily: 'Roboto', color: Color(0xFF1467B3), fontSize: 14,fontWeight: FontWeight.w500)),
+
+                              ],
+                            ),
+
+                          ),
+                        ),
 
                       ]  ),
 
