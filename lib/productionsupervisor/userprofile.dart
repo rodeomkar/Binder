@@ -34,7 +34,7 @@ class _UserProfileState extends State<UserProfile> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
-          title: Image.asset('Logo/LogoWhite/logoFullWhite.png', fit: BoxFit.cover,height: 28),
+          title: Text("User Proile"),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -44,15 +44,8 @@ class _UserProfileState extends State<UserProfile> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'User Profile',
-                        style: TextStyle(color: Color(0xFF1467B3), fontSize: 18, fontWeight: FontWeight.w500,fontFamily: "Roboto"),
-                      ),
-                    ),
                     SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
                     TextField(
                       enabled: false,
@@ -112,6 +105,7 @@ class _UserProfileState extends State<UserProfile> {
                       height: 20,
                     ),
                     TextField(
+                      enabled: false,
                       decoration: InputDecoration(
                           hintText: "Phone Number",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
@@ -125,17 +119,18 @@ class _UserProfileState extends State<UserProfile> {
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
-                        suffixIcon: const Icon(
-                          Icons.edit,
-                          color: Color(0xFF1467B3),
-                        ),
+//                        suffixIcon: const Icon(
+//                          Icons.edit,
+//                          color: Color(0xFF1467B3),
+//                        ),
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     TextFormField(
-                      autovalidate: true,
+                      enabled: false,
+                      //autovalidate: true,
                       decoration: InputDecoration(
                           hintText: "Email ID",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
@@ -149,10 +144,10 @@ class _UserProfileState extends State<UserProfile> {
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
-                        suffixIcon: const Icon(
-                          Icons.edit,
-                          color: Color(0xFF1467B3),
-                        ),
+//                        suffixIcon: const Icon(
+//                          Icons.edit,
+//                          color: Color(0xFF1467B3),
+//                        ),
                       ),
                       validator: (input) => !input.contains('@') ? 'Not a valid email' : null,
                       onSaved: (input) => _email=input,

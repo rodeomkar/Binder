@@ -32,7 +32,7 @@ class _UserProfileState extends State<UserProfileop> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF1467B3),
-          title: Image.asset('Logo/LogoWhite/logoFullWhite.png', fit: BoxFit.cover,height: 28),
+          title: Text("User Proile"),
           centerTitle: true,
           automaticallyImplyLeading: false,
         ),
@@ -44,15 +44,9 @@ class _UserProfileState extends State<UserProfileop> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'User Profile',
-                        style: TextStyle(color: Color(0xFF1467B3), fontSize: 18, fontWeight: FontWeight.w500,fontFamily: "Roboto"),
-                      ),
-                    ),
+
                     SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
                     TextField(
                       enabled: false,
