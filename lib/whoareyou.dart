@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tmapp/productionoperator/firstop.dart';
 import 'package:tmapp/productionsupervisor/first.dart';
+import 'package:tmapp/systemadmin/firstadmin.dart';
 class Who extends StatefulWidget {
   @override
   _WhoState createState() => _WhoState();
@@ -30,6 +31,15 @@ class _WhoState extends State<Who> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => First()),
+                    );
+                  },
+                ),
+                FlatButton(
+                  child: Text("Admin"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Firstadmin()),
                     );
                   },
                 )
