@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:tmapp/productionsupervisor/addcomplaint.dart';
 import 'package:tmapp/productionsupervisor/complaint.dart';
+import 'package:tmapp/productionsupervisor/first.dart';
 
 
 final routeObserver = RouteObserver<PageRoute>();
@@ -37,22 +38,9 @@ class _DepartState extends State<Depart> with RouteAware{
     });
   }
   Future<bool> _onbackpressed(){
-    return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: new Text('Are you sure?'),
-          content: new Text('Do you want to exit the App?'),
-          actions: <Widget>[
-            OutlineButton(
-              child: Text('Yes'),
-              onPressed: ()=> exit(0),
-            ),
-            OutlineButton(
-              child: Text('No'),
-              onPressed: ()=> Navigator.pop(context,false),
-            )
-          ],
-        )
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => First()),
     );
   }
   @override

@@ -1,39 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/productionsupervisor/first.dart';
-import 'package:tmapp/productionsupervisor/resetpass.dart';
+import 'package:tmapp/maintainenceoperator/Firstmo.dart';
+import 'package:tmapp/maintainenceoperator/resetpassmo.dart';
 
-class UserProfile extends StatefulWidget {
+class Profilems extends StatefulWidget {
   @override
-  _UserProfileState createState() => _UserProfileState();
+  _ProfilemoState createState() => _ProfilemoState();
 }
 
-class _UserProfileState extends State<UserProfile> {
-
-  String _email;
-
+class _ProfilemoState extends State<Profilems> {
   gotoSecondActivity(BuildContext context){
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ResetPass()),
+      MaterialPageRoute(builder: (context) => ResetPassmo()),
     );
   }
   Future<bool> _onBackPressed(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => First()),
+      MaterialPageRoute(builder: (context) => Firstmo()),
     );
   }
+
+  String _email;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onBackPressed,
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
-          centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
           title: Text("User Proile"),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -43,6 +42,7 @@ class _UserProfileState extends State<UserProfile> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+
                     SizedBox(
                       height: 15,
                     ),
@@ -58,7 +58,7 @@ class _UserProfileState extends State<UserProfile> {
                           borderSide: BorderSide(color: Color.fromRGBO(93, 153, 252,100)),
                         ),
                         enabledBorder:OutlineInputBorder(
-                          borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
+                            borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
                       ),
                     ),
@@ -68,7 +68,7 @@ class _UserProfileState extends State<UserProfile> {
                     TextField(
                       enabled: false,
                       decoration: InputDecoration(
-                          hintText: "Name",
+                        hintText: "Name",
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding:
@@ -87,7 +87,7 @@ class _UserProfileState extends State<UserProfile> {
                     TextField(
                       enabled: false,
                       decoration: InputDecoration(
-                          hintText: "Designation",
+                        hintText: "Designation",
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding:
@@ -104,9 +104,8 @@ class _UserProfileState extends State<UserProfile> {
                       height: 20,
                     ),
                     TextField(
-                      enabled: false,
                       decoration: InputDecoration(
-                          hintText: "Phone Number",
+                        hintText: "Phone Number",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
@@ -118,20 +117,19 @@ class _UserProfileState extends State<UserProfile> {
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
-//                        suffixIcon: const Icon(
-//                          Icons.edit,
-//                          color: Color(0xFF1467B3),
-//                        ),
+                        suffixIcon: const Icon(
+                          Icons.edit,
+                          color: Color(0xFF1467B3),
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     TextFormField(
-                      enabled: false,
-                      //autovalidate: true,
+                      autovalidate: true,
                       decoration: InputDecoration(
-                          hintText: "Email ID",
+                        hintText: "Email ID",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
@@ -143,10 +141,10 @@ class _UserProfileState extends State<UserProfile> {
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
-//                        suffixIcon: const Icon(
-//                          Icons.edit,
-//                          color: Color(0xFF1467B3),
-//                        ),
+                        suffixIcon: const Icon(
+                          Icons.edit,
+                          color: Color(0xFF1467B3),
+                        ),
                       ),
                       validator: (input) => !input.contains('@') ? 'Not a valid email' : null,
                       onSaved: (input) => _email=input,
@@ -232,5 +230,3 @@ class _UserProfileState extends State<UserProfile> {
     );
   }
 }
-
-

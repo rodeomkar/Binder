@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/operatorsupervisor/updatestatus.dart';
 import 'package:tmapp/productionsupervisor/first.dart';
 import 'package:tmapp/productionsupervisor/solvecomplaint.dart';
 import 'package:tmapp/productionoperator/firstop.dart';
