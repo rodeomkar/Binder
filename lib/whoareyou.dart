@@ -16,7 +16,7 @@ class _WhoState extends State<Who> {
       child: Scaffold(
         body: Center(
           child: Card(
-            child: Row(
+            child: Column(
               children: <Widget>[
                 FlatButton(
                   child: Text("Prod Operator"),
