@@ -258,6 +258,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                       ),
                     ),
                     TextField(
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: "Phone Number",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),

@@ -34,22 +34,69 @@ class _HomePageAdminState extends State<HomePageAdmin> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onbackpressed,
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false, // hides leading widget
-          title: Image.asset('Logo/LogoWhite/logoFullWhite.png',
-              fit: BoxFit.cover, height: 28),
-          centerTitle: true,
-          backgroundColor: Color(0xFF1467B3),
-        ),
-        body: Container(
-          alignment: Alignment.topCenter,
-          child: Stack(
-            children: <Widget>[
-              Hero(
-                tag: "1",
-                child: Container(
-                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+      child: AspectRatio(
+        aspectRatio: 100/100,
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false, // hides leading widget
+            title: Image.asset('Logo/LogoWhite/logoFullWhite.png',
+                fit: BoxFit.cover, height: 28),
+            centerTitle: true,
+            backgroundColor: Color(0xFF1467B3),
+          ),
+          body: Container(
+            alignment: Alignment.topCenter,
+            child: Stack(
+              children: <Widget>[
+                Hero(
+                  tag: "1",
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: Card(
+                      elevation:5,
+                      child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddEmployee()),
+                          );
+                          print('Card tapped.');
+                        },
+                        child: Container(
+                          height: 100,
+                          margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: 15, bottom: 15, left: 50),
+                                child: Image.asset('assests/images/AddEmpIcon.png',
+                                    fit: BoxFit.cover, height: 25),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: 15, bottom: 15, left: 15),
+                                child: Text("Add an Employee",
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xb31467b3),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 180, left: 20, right: 20),
                   child: Card(
                     elevation:5,
                     child: InkWell(
@@ -58,7 +105,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddEmployee()),
+                              builder: (context) => DeleteEmployee()),
                         );
                         print('Card tapped.');
                       },
@@ -71,15 +118,17 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                         child: Row(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(
-                                  top: 15, bottom: 15, left: 50),
-                              child: Image.asset('assests/images/AddEmpIcon.png',
-                                  fit: BoxFit.cover, height: 25),
+                              margin:
+                                  EdgeInsets.only(top: 15, bottom: 15, left: 50),
+                              child: Image.asset(
+                                  'assests/images/DeleteEmpIcon.png',
+                                  fit: BoxFit.cover,
+                                  height: 30),
                             ),
                             Container(
-                              margin: EdgeInsets.only(
-                                  top: 15, bottom: 15, left: 15),
-                              child: Text("Add an Employee",
+                              margin:
+                                  EdgeInsets.only(top: 15, bottom: 15, left: 15),
+                              child: Text("Delete an Employee",
                                   style: TextStyle(
                                       fontFamily: 'Roboto',
                                       color: Color(0xb31467b3),
@@ -92,54 +141,8 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                     ),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 180, left: 20, right: 20),
-                child: Card(
-                  elevation:5,
-                  child: InkWell(
-                    splashColor: Colors.blue.withAlpha(30),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DeleteEmployee()),
-                      );
-                      print('Card tapped.');
-                    },
-                    child: Container(
-                      height: 100,
-                      margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            margin:
-                                EdgeInsets.only(top: 15, bottom: 15, left: 50),
-                            child: Image.asset(
-                                'assests/images/DeleteEmpIcon.png',
-                                fit: BoxFit.cover,
-                                height: 30),
-                          ),
-                          Container(
-                            margin:
-                                EdgeInsets.only(top: 15, bottom: 15, left: 15),
-                            child: Text("Delete an Employee",
-                                style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xb31467b3),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

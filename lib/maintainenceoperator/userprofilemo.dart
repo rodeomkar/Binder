@@ -104,9 +104,9 @@ class _ProfilemoState extends State<Profilemo> {
                       height: 20,
                     ),
                     TextField(
+                      enabled: false,
                       decoration: InputDecoration(
                         hintText: "Phone Number",
-                        hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding:
@@ -117,20 +117,16 @@ class _ProfilemoState extends State<Profilemo> {
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
-                        suffixIcon: const Icon(
-                          Icons.edit,
-                          color: Color(0xFF1467B3),
-                        ),
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     TextFormField(
+                      enabled: false,
                       autovalidate: true,
                       decoration: InputDecoration(
                         hintText: "Email ID",
-                        hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding:
@@ -141,16 +137,10 @@ class _ProfilemoState extends State<Profilemo> {
                         enabledBorder:OutlineInputBorder(
                             borderSide: BorderSide(color: Color.fromRGBO(223, 232, 247,100))    //dfe8f7
                         ),
-                        suffixIcon: const Icon(
-                          Icons.edit,
-                          color: Color(0xFF1467B3),
-                        ),
                       ),
-                      validator: (input) => !input.contains('@') ? 'Not a valid email' : null,
-                      onSaved: (input) => _email=input,
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 35,
                     ),
                     SizedBox(
                       width: 400,
@@ -163,33 +153,12 @@ class _ProfilemoState extends State<Profilemo> {
                         padding: EdgeInsets.all(8.0),
                         splashColor: Colors.blueAccent,
                         onPressed: () {
-                          /*...*/
-                        },
-                        child: Text(
-                          "Save Changes",
-                          style: TextStyle(fontSize: 15.0),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      width: 400,
-                      height: 45,
-                      child: OutlineButton(
-                        textColor: Color(0xFF1666f0),
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(8.0),
-                        splashColor: Colors.blueAccent,
-                        onPressed: () {
                           gotoSecondActivity(context);
                         },
                         child: Text(
                           "Reset Password",
-                          style: TextStyle(fontSize: 15.0, color: Color(0xFF1467B3)),
+                          style: TextStyle(fontSize: 15.0),
                         ),
-                        borderSide: BorderSide(color: Color(0xFF1467B3)),
                       ),
                     ),
                     SizedBox(

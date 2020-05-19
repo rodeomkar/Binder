@@ -27,7 +27,7 @@ class _FirstState extends State<Firstms> {
         inactiveIconColor: Color(0xFF1465B0),
         tabs: [
           TabData(iconData: Icons.insert_comment, title: "Complaints", ),
-          TabData(iconData: Icons.person, title: "Statistics"),
+          TabData(iconData: Icons.timeline, title: "Statistics"),
           TabData(iconData: Icons.person, title: "Profile")
         ],
         onTabChangedListener: (int index){
