@@ -1,3 +1,3 @@
 # Binder
 
-Complaint register based app using flutter.
+App for managing complants and tracking updates of complaints based on flutter.
