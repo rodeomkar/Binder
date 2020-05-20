@@ -46,10 +46,6 @@ class _ComaplintDetailsState extends State<AssignOperator> {
                 );
             },
           ),
-          title: Text("Logo",
-              style: TextStyle(
-                  fontFamily: 'Roboto', color: Colors.white, fontSize: 30)),
-          centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
         ),
         body: SingleChildScrollView(
@@ -232,14 +228,14 @@ class _ComaplintDetailsState extends State<AssignOperator> {
                         key: key,
                         clearOnSubmit: false,
                         suggestions: suggestions,
-                        style: TextStyle(color: Colors.blue,fontSize: 14),
+                        style: TextStyle(color: Color(0xFF1467B3),fontSize: 14),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.blue)
+                            borderSide: BorderSide(color: Color(0xFF1467B3))
                           ),
                           contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 20),
                           hintText: "Search",
-                          hintStyle: TextStyle(color: Colors.blue,fontSize: 18)
+                          hintStyle: TextStyle(color: Color(0xFF1467B3),fontSize: 18)
                         ),
                         itemFilter: (item,query){
                           return item.toLowerCase().startsWith(query.toLowerCase());

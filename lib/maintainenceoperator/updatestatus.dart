@@ -25,8 +25,7 @@ class _ComaplintDetailsState extends State<UpdateStatus> {
               );
             },
           ),
-          title: Text("Logo",style: TextStyle(fontFamily: 'Roboto', color: Colors.white, fontSize: 30)),
-          centerTitle: true,
+
           backgroundColor: Color(0xFF1467B3),
 
         ),
@@ -160,7 +159,7 @@ class _ComaplintDetailsState extends State<UpdateStatus> {
                                     //onChanged: _handleRadioValueChange1,
                                   ),
                                   new Text(
-                                    'On going',
+                                    'Ongoing',
                                     style: new TextStyle(
                                       fontFamily: 'Roboto',
                                       fontSize: 14.0,
@@ -199,7 +198,7 @@ class _ComaplintDetailsState extends State<UpdateStatus> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 20,),
                       Container(
                         //padding:EdgeInsets.only(top: 400,left:20,right: 20) ,
                         child:new SizedBox(
@@ -212,7 +211,7 @@ class _ComaplintDetailsState extends State<UpdateStatus> {
                         ),
 
                       ),
-                      SizedBox(height: 10,)
+                      SizedBox(height: 20,)
 
 
                     ],

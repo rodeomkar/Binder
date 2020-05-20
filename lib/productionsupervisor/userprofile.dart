@@ -33,7 +33,7 @@ class _UserProfileState extends State<UserProfile> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
-          title: Text("User Proile"),
+          title: Text("User Profile"),
         ),
         body: SingleChildScrollView(
           child: Container(

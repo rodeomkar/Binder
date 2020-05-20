@@ -30,7 +30,7 @@ class _ProfilemoState extends State<Profilems> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF1467B3),
-          title: Text("User Proile"),
+          title: Text("User Profile"),
           centerTitle: true,
           automaticallyImplyLeading: false,
         ),
