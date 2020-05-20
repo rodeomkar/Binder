@@ -1,9 +1,8 @@
-import 'package:binder/LoginFiles/login.dart';
-import 'package:binder/reusableWidget/CustomPasswordField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../login.dart';
 import '../themes.dart';
 
 class changePassword extends StatefulWidget {

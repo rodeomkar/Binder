@@ -1,11 +1,12 @@
 import 'dart:async';
 
-import 'package:binder/LoginFiles/changePassword.dart';
-import 'package:binder/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
+import '../themes.dart';
+import 'changePassword.dart';
 
 class Otp extends StatefulWidget {
   final String email;

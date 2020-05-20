@@ -1,12 +1,13 @@
-import 'package:binder/AnimationFiles/FadeAnimation.dart';
-import 'package:binder/LoginFiles/OTPAnimated.dart';
-import 'package:binder/LoginFiles/Otp.dart';
-import 'package:binder/first.dart';
-import 'package:binder/reusableWidget/CustomPasswordField.dart';
-import 'package:binder/themes.dart';
+import '../productionsupervisor/first.dart';
+
+import '../ReusableWidgets/CustomPasswordField.dart';
+import '../FadeAnimation.dart';
+import '../themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
+import 'Otp.dart';
 
 class LoginMain extends StatefulWidget {
   @override
