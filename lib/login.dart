@@ -17,7 +17,9 @@ class _LoginMainState extends State<LoginMain> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: FadeAnimation(0.5,Container(
+        child: FadeAnimation(
+          delay: 0.5,
+          child: Container(
           child: Column(
             children: <Widget>[
               Container(
@@ -38,7 +40,9 @@ class _LoginMainState extends State<LoginMain> {
                           left: 30,
                           width: 80,
                           height: 100,
-                          child: FadeAnimation(1, Container(
+                          child: FadeAnimation(
+                            delay: 1,
+                            child: Container(
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image:
@@ -49,7 +53,9 @@ class _LoginMainState extends State<LoginMain> {
                         left: 140,
                         width: 80,
                         height: 150,
-                        child: FadeAnimation(1.3, Container(
+                        child: FadeAnimation(
+                            delay: 1.3,
+                            child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage('assets/images/light-2.png')
@@ -62,7 +68,9 @@ class _LoginMainState extends State<LoginMain> {
                         top: 40,
                         width: 80,
                         height: 150,
-                        child: FadeAnimation(1.6, Container(
+                        child: FadeAnimation(
+                            delay: 1.6,
+                            child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage('assets/images/clock.png')
@@ -71,7 +79,7 @@ class _LoginMainState extends State<LoginMain> {
                         )),
                       ),
                       Positioned(
-                        child: FadeAnimation(1.8, Align(
+                        child: FadeAnimation(delay: 1.8,child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
                             height: 60.0,
@@ -91,7 +99,8 @@ class _LoginMainState extends State<LoginMain> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    FadeAnimation(1.8, Container(
+                    FadeAnimation(
+                        delay: 1.8, child: Container(
                       padding: EdgeInsets.only(bottom: 20,top: 50),
                       child: Text(
                         'Sign In To Continue.',
@@ -101,7 +110,7 @@ class _LoginMainState extends State<LoginMain> {
                         ),
                       ),
                     )),
-                    FadeAnimation(1.8, Container(
+                    FadeAnimation(delay: 1.8,child: Container(
                       padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -131,12 +140,12 @@ class _LoginMainState extends State<LoginMain> {
                               ),
                             ),
                           ),
-                          CustomPasswordField(),
+                          CustomInputField(),
                         ],
                       ),
                     )),
                     SizedBox(height: 30,),
-                    FadeAnimation(2, InkWell(
+                    FadeAnimation(delay:2,child: InkWell(
                       onTap: (){},
                       child: Container(
                         height: 50,
@@ -153,7 +162,7 @@ class _LoginMainState extends State<LoginMain> {
                       ),
                     )),
                     SizedBox(height: 10,),
-                    FadeAnimation(1.5, Text("Forgot Password?",
+                    FadeAnimation(delay: 1.5,child: Text("Forgot Password?",
                       style: TextStyle(
                           color: primaryblue),)),
                   ],

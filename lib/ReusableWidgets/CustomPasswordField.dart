@@ -1,21 +1,38 @@
 import 'package:flutter/material.dart';
 
-class CustomPasswordField extends StatefulWidget {
+import '../themes.dart';
+
+class CustomInputField extends StatefulWidget {
+
+  final String hintText;
+  final bool passField;
+  final Icon prefixIconVal;
+
+  const CustomInputField({
+    Key key,
+    @required this.hintText,
+    @required this.passField,
+    this.prefixIconVal,
+  }) : super(key: key);
+
   @override
-  _CustomPasswordFieldState createState() => _CustomPasswordFieldState();
+  _CustomInputFieldState createState() => _CustomInputFieldState();
 }
 
-class _CustomPasswordFieldState extends State<CustomPasswordField> {
+class _CustomInputFieldState extends State<CustomInputField> {
   bool _showPassword = false;
   String _password = "";
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
       child: TextField(
         decoration: InputDecoration(
-            suffixIcon: GestureDetector(
+            filled: true,
+            fillColor: Colors.grey[100],
+            prefixIcon: widget.prefixIconVal,
+            border: InputBorder.none,
+            suffixIcon: widget.passField == true ? GestureDetector(
               onTap: (){
                 setState(() {
                   _showPassword = !_showPassword;
@@ -24,14 +41,13 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
               child: Icon(
                 _showPassword ? Icons.visibility : Icons.visibility_off,
               ),
-            ),
-            border: InputBorder.none,
-            hintText: "Password",
+            ) : null,
+            hintText: widget.hintText,
             hintStyle: TextStyle(
-                color: Colors.grey[400])
+                color: Colors.grey)
         ),
         onSubmitted: (val) => _password = val,
-        obscureText: !_showPassword,
+        obscureText: widget.passField == true ? !_showPassword : false,
       ),
     );
   }

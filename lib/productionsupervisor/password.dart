@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 
 class PasswordField extends StatefulWidget {
-  const PasswordField({
-    this.fieldKey,
-    this.hintText,
-    this.labelText,
-    this.helperText,
-    this.onSaved,
-    this.validator,
-    this.onFieldSubmitted,
-  });
-
   final Key fieldKey;
   final String hintText;
   final String labelText;
@@ -18,20 +8,32 @@ class PasswordField extends StatefulWidget {
   final FormFieldSetter<String> onSaved;
   final FormFieldValidator<String> validator;
   final ValueChanged<String> onFieldSubmitted;
+  final bool obscureTextIcon;
+  final bool obscureText;
+
+  PasswordField({
+    this.fieldKey,
+    @required this.hintText,
+    this.labelText,
+    this.helperText,
+    this.onSaved,
+    this.validator,
+    this.onFieldSubmitted,
+    this.obscureText,
+    this.obscureTextIcon,
+  });
 
   @override
-  _PasswordFieldState createState() => new _PasswordFieldState();
+  _PasswordFieldState createState() => _PasswordFieldState();
 }
 
 class _PasswordFieldState extends State<PasswordField> {
-  bool _obscureText = true;
-
   @override
   Widget build(BuildContext context) {
-    return new TextFormField(
+    return TextFormField(
       enableInteractiveSelection: false,
       key: widget.fieldKey,
-      obscureText: _obscureText,
+      obscureText: widget.obscureText,
       onSaved: widget.onSaved,
       validator: widget.validator,
       onFieldSubmitted: widget.onFieldSubmitted,
@@ -49,15 +51,15 @@ class _PasswordFieldState extends State<PasswordField> {
         ),
         hintText: widget.hintText,
         helperText: widget.helperText,
-        suffixIcon: new GestureDetector(
+        suffixIcon: widget.obscureTextIcon == true ? GestureDetector(
           onTap: () {
             setState(() {
-              _obscureText = !_obscureText;
+              widget.obscureText != widget.obscureText;
             });
           },
           child:
-          new Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
-        ),
+          new Icon(widget.obscureText ? Icons.visibility : Icons.visibility_off),
+        ) : null,
       ),
     );
   }

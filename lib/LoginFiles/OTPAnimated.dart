@@ -197,8 +197,8 @@ class _OTPAnimatedState extends State<OTPAnimated>
                     ),
                   ),
                   FadeAnimation(
-                    1.6,
-                    AnimatedBuilder(
+                    delay: 1.6,
+                    child: AnimatedBuilder(
                       animation: _scaleController,
                       builder: (context, child) => Transform.scale(
                           scale: _scaleAnimation.value,
