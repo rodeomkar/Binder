@@ -11,7 +11,7 @@ class OperatorNavigationBar extends StatefulWidget {
 
 class _OperatorNavigationBarState extends State<OperatorNavigationBar> {
   int currentIndex = 0;
-  Color _color0 = Colors.white, _color1 = primaryblue, _color2 = primaryblue, _color3 = primaryblue;
+  Color _color0 = Colors.white, _color1 = primaryblue, _color2 = primaryblue, _color3 = primaryblue; // ignore: unused_field
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,12 @@ class _OperatorNavigationBarState extends State<OperatorNavigationBar> {
       onItemSelected: (index) => setState(() {
         currentIndex = index;
         if(index == 0){
-          appBarTitle = "Complaints";
           _color0 = Colors.white;
           _color1 = primaryblue;
           _color2 = primaryblue;
           _color3 = primaryblue;
         }
         else if(index == 1){
-          appBarTitle = "Profile";
-          print(getAppBarTitle());
           _color1 = Colors.white;
           _color0 = primaryblue;
           _color2 = primaryblue;
@@ -76,28 +73,24 @@ class _SupervisorNavigationBarState extends State<SupervisorNavigationBar> {
       onItemSelected: (index) => setState(() {
         currentIndex = index;
         if(index == 0){
-          appBarTitle = "Complaints";
           _color0 = Colors.white;
           _color1 = primaryblue;
           _color2 = primaryblue;
           _color3 = primaryblue;
         }
         else if(index == 1){
-          appBarTitle = "Department";
           _color1 = Colors.white;
           _color0 = primaryblue;
           _color2 = primaryblue;
           _color3 = primaryblue;
         }
         else if(index == 2){
-          appBarTitle = "Statistics";
           _color2 = Colors.white;
           _color1 = primaryblue;
           _color0 = primaryblue;
           _color3 = primaryblue;
         }
         else if(index == 3){
-          appBarTitle = "Profile";
           _color3 = Colors.white;
           _color1 = primaryblue;
           _color2 = primaryblue;

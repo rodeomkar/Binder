@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../themes.dart';
-
 class CustomInputField extends StatefulWidget {
 
   final String hintText;
@@ -21,17 +19,23 @@ class CustomInputField extends StatefulWidget {
 
 class _CustomInputFieldState extends State<CustomInputField> {
   bool _showPassword = false;
+  // ignore: unused_field
   String _password = "";
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 45,
+      width: double.infinity,
       child: TextField(
         decoration: InputDecoration(
             filled: true,
-            fillColor: Colors.grey[100],
+            fillColor: Colors.grey[200],
             prefixIcon: widget.prefixIconVal,
-            border: InputBorder.none,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: BorderSide(color: Colors.grey[300]),
+            ),
             suffixIcon: widget.passField == true ? GestureDetector(
               onTap: (){
                 setState(() {
