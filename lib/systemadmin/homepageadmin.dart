@@ -78,7 +78,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                               Container(
                                 //  margin: EdgeInsets.only(top: 15, bottom: 15, left: 50),
                                 child: Image.asset(
-                                    'assets/images/AddEmpIcon.png',
+                                    'assests/images/AddEmpIcon.png',
                                     fit: BoxFit.cover,
                                     height: 30),
                               ),
@@ -88,7 +88,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                                   child: Text("Add an Employee",
                                       style: TextStyle(
                                           fontFamily: 'Roboto',
-                                          color: Color(0xb31467b3),
+                                          color: Color(0xFF1467B3),
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500)),
                                 ),
@@ -135,7 +135,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                               child: Text("Edit an Employee",
                                   style: TextStyle(
                                       fontFamily: 'Roboto',
-                                      color: Color(0xb31467b3),
+                                      color: Color(0xFF1467B3),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500)),
                             ),
@@ -182,7 +182,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                               child: Text("Delete an Employee",
                                   style: TextStyle(
                                       fontFamily: 'Roboto',
-                                      color: Color(0xb31467b3),
+                                      color: Color(0xFF1467B3),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500)),
                             ),
