@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../FadeAnimation.dart';
-import '../login.dart';
-import '../themes.dart';
+import '../ReusableWidgets/FadeAnimation.dart';
+import '../ReusableWidgets/themes.dart';
 
 class OTPAnimated extends StatefulWidget {
   @override
@@ -41,7 +40,7 @@ class _OTPAnimatedState extends State<OTPAnimated>
         ColorTween(begin: primaryblue, end: Colors.white).animate(_colorController)
           ..addStatusListener((status) {
             if (status == AnimationStatus.completed) {
-              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoginMain()));
+              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: null));
             }
           });
   }

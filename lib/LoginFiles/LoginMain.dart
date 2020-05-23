@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tmapp/FadeAnimation.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:tmapp/MainFiles/HomePage.dart';
+import 'package:tmapp/ReusableWidgets/FadeAnimation.dart';
 import 'package:tmapp/ReusableWidgets/CustomButton.dart';
 import 'package:tmapp/ReusableWidgets/CustomInputTextField.dart';
-import 'package:tmapp/themes.dart';
+import 'package:tmapp/ReusableWidgets/themes.dart';
+import 'package:tmapp/productionsupervisor/first.dart';
+import 'package:tmapp/productionsupervisor/listcomp.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -11,6 +15,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String uname = "", pass = "";
+  bool _showPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +44,8 @@ class _LoginState extends State<Login> {
                   width: 200,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(
-                            'assets/Logo/LogoBlue/logoFullBlue.png'),
+                        image:
+                            AssetImage('assets/Logo/LogoBlue/logoFullBlue.png'),
                         fit: BoxFit.fitWidth),
                   ),
                 ),
@@ -62,35 +68,174 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 30,
                 ),
-                CustomInputField(
-                  hintText: 'Personal Id',
-                  passField: false,
-                  prefixIconVal: Icon(Icons.alternate_email,color: primaryblue,),
+                Container(
+                  height: 45,
+                  width: double.infinity,
+                  child: TextField(
+                    onChanged: (String text) {
+                      uname = text;
+                    },
+                    onSubmitted: (String text) {
+                      uname = text;
+                    },
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.grey[200],
+                        prefixIcon: Icon(
+                          Icons.alternate_email,
+                          color: primaryblue,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: BorderSide(color: Colors.grey[300]),
+                        ),
+                        hintText: 'Personal Id',
+                        hintStyle: TextStyle(color: Colors.grey)),
+                  ),
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                CustomInputField(
-                  hintText: 'Password',
-                  passField: true,
-                  prefixIconVal: Icon(Icons.enhanced_encryption,color: primaryblue,),
+                Container(
+                  height: 45,
+                  width: double.infinity,
+                  child: TextField(
+                    onChanged: (String text) {
+                      pass = text;
+                    },
+                    onSubmitted: (String text) {
+                      pass = text;
+                      if(uname == "1" && pass == "1"){
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 1)));
+                      }
+                      else if(uname == "2" && pass == "2"){
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 2)));
+                      }
+                      else if(uname == "3" && pass == "3"){
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 3)));
+                      }
+                      else if(uname == "4" && pass == "4"){
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 4)));
+                      }
+                      else{
+                        Scaffold.of(context).showSnackBar(
+                            SnackBar(
+                                content: Row(
+                                  children: <Widget>[
+                                    Icon(Icons.warning),
+                                    SizedBox(width: 10,),
+                                    Text('Invalid Username / Password.'),
+                                  ],
+                                )
+                            )
+                        );
+                      }
+                    },
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.grey[200],
+                        prefixIcon: Icon(
+                          Icons.enhanced_encryption,
+                          color: primaryblue,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: BorderSide(color: Colors.grey[300]),
+                        ),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _showPassword = !_showPassword;
+                            });
+                          },
+                          child: Icon(
+                            _showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                        ),
+                        hintText: 'Password',
+                        hintStyle: TextStyle(color: Colors.grey)),
+                    obscureText: !_showPassword,
+                  ),
                 ),
                 SizedBox(
                   height: 30,
                 ),
-                CustomButton(
-                  filled: true,
-                  text: 'Confirm',
+                Builder(
+                  builder: (context) => SizedBox(
+                    width: double.infinity,
+                    height: 45,
+                    child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          side: BorderSide(color: primaryblue,width: 1.5)
+                      ),
+                      color: primaryblue,
+                      textColor: Colors.white ,
+                      splashColor: Colors.blueAccent,
+                      child: Text(
+                          'Sign In',
+                        style: TextStyle(
+                          fontSize: 16
+                        ),
+                      ),
+                      onPressed: (){
+                        setState(() {
+                          if(uname == "1" && pass == "1"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 1)));
+                          }
+                          else if(uname == "2" && pass == "2"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 2)));
+                          }
+                          else if(uname == "3" && pass == "3"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 3)));
+                          }
+                          else if(uname == "4" && pass == "4"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 4)));
+                          }
+                          else{
+                            Scaffold.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Row(
+                                    children: <Widget>[
+                                      Icon(Icons.warning),
+                                      SizedBox(width: 10,),
+                                      Text('Invalid Username / Password.'),
+                                    ],
+                                  )
+                              )
+                            );
+                          }
+                        });
+                      },
+                    )
+                  ),
                 ),
                 Divider(
                   height: 35,
                   color: primaryblue,
                   thickness: 1.2,
                 ),
-                CustomButton(
-                  filled: false,
-                  text: 'Cancel',
-                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 45,
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        side: BorderSide(color: primaryblue,width: 1.5)
+                    ),
+                    color: Colors.white,
+                    textColor: primaryblue ,
+                    splashColor: Colors.blueAccent,
+                    child: Text(
+                      "Forget Password",
+                      style: TextStyle(fontSize: 18.0,),
+                    ),
+                    onPressed: (){
+                    },
+                  ),
+                )
               ],
             ),
           ),

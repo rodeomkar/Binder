@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/themes.dart';
+import 'package:tmapp/ReusableWidgets/themes.dart';
 
 class CustomButton extends StatefulWidget {
 
@@ -31,9 +31,6 @@ class _CustomButtonState extends State<CustomButton> {
         color: widget.filled == true ? primaryblue : Colors.white,
         textColor: widget.filled == true ? Colors.white : primaryblue ,
         splashColor: Colors.blueAccent,
-        onPressed: () {
-
-        },
         child: Text(
           widget.text,
           style: TextStyle(fontSize: 16.0),

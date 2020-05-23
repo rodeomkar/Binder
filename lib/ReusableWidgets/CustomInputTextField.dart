@@ -19,8 +19,12 @@ class CustomInputField extends StatefulWidget {
 
 class _CustomInputFieldState extends State<CustomInputField> {
   bool _showPassword = false;
+  String inputText = "";
   // ignore: unused_field
-  String _password = "";
+
+  String getInputValue(){
+    return inputText;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,12 @@ class _CustomInputFieldState extends State<CustomInputField> {
       height: 45,
       width: double.infinity,
       child: TextField(
+        onChanged: (String text){
+          inputText = text;
+        },
+        onSubmitted: (String text){
+          inputText = text;
+        },
         decoration: InputDecoration(
             filled: true,
             fillColor: Colors.grey[200],
@@ -50,7 +60,6 @@ class _CustomInputFieldState extends State<CustomInputField> {
             hintStyle: TextStyle(
                 color: Colors.grey)
         ),
-        onSubmitted: (val) => _password = val,
         obscureText: widget.passField == true ? !_showPassword : false,
       ),
     );

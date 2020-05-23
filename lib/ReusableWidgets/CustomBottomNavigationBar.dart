@@ -1,10 +1,9 @@
 library bottom_navy_bar;
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../themes.dart';
+import 'themes.dart';
 
 class BottomNavyBar extends StatelessWidget {
   final int selectedIndex;
@@ -27,11 +26,11 @@ class BottomNavyBar extends StatelessWidget {
     this.backgroundColor,
     this.itemCornerRadius = 50,
     this.containerHeight = 56,
-    this.animationDuration = const Duration(milliseconds: 270),
+    this.animationDuration = const Duration(milliseconds: 300),
     this.mainAxisAlignment = MainAxisAlignment.spaceEvenly,
     @required this.items,
     @required this.onItemSelected,
-    this.curve = Curves.linear,
+    this.curve = Curves.decelerate,
   }) {
     assert(items != null);
     assert(items.length >= 2 && items.length <= 5);
@@ -41,9 +40,7 @@ class BottomNavyBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = (backgroundColor == null)
-        ? Theme.of(context).bottomAppBarColor
-        : backgroundColor;
+    final bgColor = navbg;
 
     return Container(
       decoration: BoxDecoration(
@@ -60,7 +57,7 @@ class BottomNavyBar extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: containerHeight,
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
           child: Row(
             mainAxisAlignment: mainAxisAlignment,
             children: items.map((item) {
@@ -75,7 +72,7 @@ class BottomNavyBar extends StatelessWidget {
                   itemCornerRadius: itemCornerRadius,
                   animationDuration: animationDuration,
                   curve: curve,
-                  width: ((MediaQuery.of(context).size.width)/(items.length-1)),
+                  width: ((MediaQuery.of(context).size.width)/(items.length <=2 ? 2 : (items.length-1))),
                 ),
               );
             }).toList(),
@@ -105,7 +102,7 @@ class _ItemWidget extends StatelessWidget {
     @required this.animationDuration,
     @required this.itemCornerRadius,
     @required this.iconSize,
-    this.curve = Curves.linear,
+    this.curve = Curves.easeIn,
   })  : assert(isSelected != null),
         assert(item != null),
         assert(backgroundColor != null),
@@ -127,7 +124,7 @@ class _ItemWidget extends StatelessWidget {
         curve: curve,
         decoration: BoxDecoration(
           color:
-              isSelected ? primaryblue : backgroundColor,
+              isSelected ? Color(0xFF11009F) : backgroundColor,
           borderRadius: BorderRadius.circular(itemCornerRadius),
         ),
         child: SingleChildScrollView(
@@ -135,10 +132,10 @@ class _ItemWidget extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           child: Container(
             width: isSelected ? (width <= 130 ? 130 : width) : 50,
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: 4),
             child: Row(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 IconTheme(
@@ -153,18 +150,17 @@ class _ItemWidget extends StatelessWidget {
                   child: item.icon,
                 ),
                 if (isSelected)
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 4),
-                      child: DefaultTextStyle.merge(
-                        style: TextStyle(
-                          color: item.activeColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        maxLines: 1,
-                        textAlign: item.textAlign,
-                        child: item.title,
+                  Container(
+                    padding: EdgeInsets.only(left: 12),
+                    child: DefaultTextStyle.merge(
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: item.activeColor,
+                        fontWeight: FontWeight.w500,
                       ),
+                      maxLines: 1,
+                      textAlign: item.textAlign,
+                      child: item.title,
                     ),
                   ),
               ],

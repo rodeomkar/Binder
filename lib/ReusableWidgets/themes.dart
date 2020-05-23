@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 Color primaryblue = Color(0xFF1467B3);
+Color navbg = Color(0xFF110A88);
 Color fadeblue = Color.fromRGBO(20, 103, 179, 0.05);
 String appBarTitle="";
 

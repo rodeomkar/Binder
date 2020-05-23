@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../login.dart';
-import '../themes.dart';
+import '../ReusableWidgets/themes.dart';
 
 class changePassword extends StatefulWidget {
   @override
@@ -97,7 +96,7 @@ class _changePasswordState extends State<changePassword> {
                   child: FlatButton.icon(
                       onPressed: (){
                         setState(() {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.leftToRightWithFade, child: LoginMain()));
+                          Navigator.push(context, PageTransition(type: PageTransitionType.leftToRightWithFade, child: null));
                         });
                       },
                       icon: Icon(Icons.forward),

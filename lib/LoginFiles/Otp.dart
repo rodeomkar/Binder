@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../themes.dart';
+import '../ReusableWidgets/themes.dart';
 import 'changePassword.dart';
 
 class Otp extends StatefulWidget {
