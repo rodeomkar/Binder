@@ -1,24 +1,21 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:tmapp/systemadmin/homepageadmin.dart';
-import 'package:tmapp/systemadmin/firstadmin.dart';
+import 'dart:io';
+import 'package:tmapp/systemadmin/editSearchEmp.dart';
 
-class AddEmployee extends StatefulWidget {
+enum TypeOfEmp { Electrical, Mechanical, Nothing }
+
+class EditEmpProfile extends StatefulWidget {
   @override
-  _AddEmployeeState createState() => _AddEmployeeState();
+  _EditEmpProfileState createState() => _EditEmpProfileState();
 }
 
-enum TypeOfEmp { Electrical, Mechanical ,Nothing}
-
-class _AddEmployeeState extends State<AddEmployee> {
+class _EditEmpProfileState extends State<EditEmpProfile> {
   final _formkey = GlobalKey<FormState>();
-
-  TypeOfEmp emp = TypeOfEmp.Nothing;
   String id = " ";
   String name = " ";
   String phoneNo = " ";
   String email = " ";
+  TypeOfEmp emp = TypeOfEmp.Nothing;
   String block = "";
   String dept = "";
   String designation = "";
@@ -36,15 +33,14 @@ class _AddEmployeeState extends State<AddEmployee> {
     "Section Incharge",
     "Line Manager",
     "Supervisor",
-    "Operator /Engineer",
+    "Operator/Engineer",
     "Temporary Operator",
-
   ];
 
   Future<bool> _onbackpressed() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Firstadmin()),
+      MaterialPageRoute(builder: (context) => EditSearchEmp()),
     );
   }
 
@@ -55,8 +51,12 @@ class _AddEmployeeState extends State<AddEmployee> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false, // hides leading widget
-          title: Text("Add an employee",
-              style: TextStyle(fontFamily: 'Roboto', color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
+          title: Text("Edit an employee",
+              style: TextStyle(
+                  fontFamily: 'Roboto',
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500)),
           centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
         ),
@@ -67,7 +67,8 @@ class _AddEmployeeState extends State<AddEmployee> {
               child: Form(
                 key: _formkey,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     TextFormField(
                       decoration: InputDecoration(
@@ -87,17 +88,17 @@ class _AddEmployeeState extends State<AddEmployee> {
                                     Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
                             ),
                       ),
-                  validator: (value) {
-                    Pattern p = r'^[a-zA-Z.]*$';
-                    RegExp regex = new RegExp(p);
-                    if (value.isEmpty)
-                    return 'Enter Name';
-                    else if (!regex.hasMatch(value)) {
-                    return 'Not a valid name';
-                    } else
-                    return null;
-                  },
-                  onSaved: (value) => name = value,
+                      validator: (value) {
+                        Pattern p = r'^[a-zA-Z.]*$';
+                        RegExp regex = new RegExp(p);
+                        if (value.isEmpty)
+                          return 'Enter Name';
+                        else if (!regex.hasMatch(value)) {
+                          return 'Not a valid name';
+                        } else
+                          return null;
+                      },
+                      onSaved: (value) => name = value,
                     ), //Name
                     SizedBox(
                       height: 20,
@@ -120,23 +121,14 @@ class _AddEmployeeState extends State<AddEmployee> {
                                     Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
                             ),
                       ),
-                        validator: (value) {
-                          Pattern p = r'^[a-zA-Z.]*$';
-                          RegExp regex = new RegExp(p);
-                          if (value.isEmpty)
-                          return 'Enter Name';
-                          else if (!regex.hasMatch(value)) {
-                          return 'Not a valid name';
-                          } else
-                          return null;
-                        },
-                        onSaved: (value) => name = value,
+                      validator: (value) =>
+                          value.isEmpty ? 'Enter Personal No.' : null,
+                      onSaved: (value) => id = value,
                     ), //Personal No.
                     SizedBox(
                       height: 20,
                     ),
                     DropdownButtonFormField(
-                     // style: TextStyle(color: Color(0xFF1467B3)),
                       decoration: InputDecoration(
                         hintText: "Block No.",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
@@ -170,13 +162,13 @@ class _AddEmployeeState extends State<AddEmployee> {
                             child: new Text(item), value: item);
                       }).toList(),
                       validator: (value) =>
-                      value == null ? 'Enter Block no.' : null,
+                          value == null ? 'Enter Block No.' : null,
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     DropdownButtonFormField(
-                      //style: TextStyle(color: Color(0xFF1467B3)),
+                      // style: TextStyle(color: Color(0xFF1467B3)),
                       decoration: InputDecoration(
                         hintText: "Department",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
@@ -209,13 +201,14 @@ class _AddEmployeeState extends State<AddEmployee> {
                         return DropdownMenuItem<String>(
                             child: new Text(item), value: item);
                       }).toList(),
-                      validator: (value) => value == null ? 'Enter Department' : null,
+                      validator: (value) =>
+                          value == null ? 'Enter Department' : null,
                     ), //Department
                     SizedBox(
                       height: 20,
                     ),
                     DropdownButtonFormField(
-                      //style: TextStyle(color: Color(0xFF1467B3)),
+                      //  style: TextStyle(color: Color(0xFF1467B3)),
                       decoration: InputDecoration(
                         hintText: "Designation",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
@@ -249,53 +242,11 @@ class _AddEmployeeState extends State<AddEmployee> {
                             child: new Text(item), value: item);
                       }).toList(),
                       validator: (value) =>
-                      value == null ? 'Enter Designation' : null,
+                          value == null ? 'Enter Designation' : null,
+                    ),
+                    SizedBox(
+                      height: 20,
                     ), //Designation
-                    Container(
-                      child: designation == "Operator/Engineer"
-                          ? new Align(
-                        alignment: Alignment.bottomRight,
-                        child: new Row(
-                          children: <Widget>[
-                            new Text(
-                              'Electrical',
-                              style: new TextStyle(
-                                  fontFamily: 'Roboto',
-                                  fontSize: 16.0,
-                                  color: Color(0xFF1467B3)),
-                            ),
-                            new Radio(
-                              value: TypeOfEmp.Electrical,
-                              groupValue: emp,
-                              onChanged: (TypeOfEmp value) {
-                                setState(() {
-                                  emp = value;
-                                });
-                              },
-                            ),
-                            new Text(
-                              'Mechanical',
-                              style: new TextStyle(
-                                  fontFamily: 'Roboto',
-                                  fontSize: 16.0,
-                                  color: Color(0xFF1467B3)),
-                            ),
-                            new Radio(
-                              value: TypeOfEmp.Mechanical,
-                              groupValue: emp,
-                              onChanged: (TypeOfEmp value) {
-                                setState(() {
-                                  emp = value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      )
-                          : SizedBox(
-                        height: 20,
-                      ),
-                    ), //RadioButton for Op/Eng only
                     TextFormField(
                       decoration: InputDecoration(
                         hintText: "Phone Number",
@@ -311,8 +262,8 @@ class _AddEmployeeState extends State<AddEmployee> {
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color:
-                                Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
-                        ),
+                                    Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
+                            ),
                       ),
                       validator: (value) {
                         Pattern p = '[0-9]{10}';
@@ -344,8 +295,8 @@ class _AddEmployeeState extends State<AddEmployee> {
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color:
-                                Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
-                        ),
+                                    Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
+                            ),
                       ),
                       validator: (value) {
                         if (value.isEmpty)
@@ -355,8 +306,8 @@ class _AddEmployeeState extends State<AddEmployee> {
                         else
                           return null;
                       },
-                      onSaved: (value) => email = value,
-                    ), //Email
+                      onSaved: (input) => email = input,
+                    ),
                     SizedBox(
                       height: 30,
                     ),
@@ -376,7 +327,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                           }
                         },
                         child: Text(
-                          "Add Employee",
+                          "Save Changes",
                           style: TextStyle(fontSize: 15.0),
                         ),
                       ),
@@ -396,7 +347,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Firstadmin()),
+                                builder: (context) => EditSearchEmp()),
                           );
                         },
                         child: Text(

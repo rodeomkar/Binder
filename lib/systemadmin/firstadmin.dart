@@ -24,7 +24,7 @@ class _FirstadminState extends State<Firstadmin> {
         inactiveIconColor: Color(0xFF1465B0),
         tabs: [
           TabData(
-            iconData: Icons.verified_user,
+            iconData: Icons.featured_play_list,
             title: "Employee",
           ),
           TabData(iconData: Icons.person, title: "Profile")

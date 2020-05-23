@@ -1,16 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tmapp/systemadmin/homepageadmin.dart';
-import 'dart:io';
-import 'package:tmapp/systemadmin/invalidPersonalNo.dart';
+import 'package:tmapp/systemadmin/editEmpProfile.dart';
 import 'package:tmapp/systemadmin/firstadmin.dart';
+import 'package:tmapp/systemadmin/firstadmin.dart';
+import 'dart:io';
 
-class DeleteEmployee extends StatefulWidget {
+import 'package:tmapp/systemadmin/homepageadmin.dart';
+
+class EditSearchEmp extends StatefulWidget {
   @override
-  _DeleteEmployeeState createState() => _DeleteEmployeeState();
+  _EditSearchEmpState createState() => _EditSearchEmpState();
 }
 
-class _DeleteEmployeeState extends State<DeleteEmployee> {
+class _EditSearchEmpState extends State<EditSearchEmp> {
   Future<bool> _onbackpressed() {
     Navigator.push(
       context,
@@ -25,23 +27,25 @@ class _DeleteEmployeeState extends State<DeleteEmployee> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false, // hides leading widget
-          title: Text("Delete an employee",
-              style: TextStyle(fontFamily: 'Roboto', color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
+          title: Text("Edit an employee",
+              style: TextStyle(
+                  fontFamily: 'Roboto',
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500)),
           centerTitle: true,
           backgroundColor: Color(0xFF1467B3),
         ),
         body: SingleChildScrollView(
           child: Container(
             child: Padding(
-              padding: EdgeInsets.all(24.0),
+              padding: EdgeInsets.all(30.0),
               child: Form(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextField(
+                    TextFormField(
                       decoration: InputDecoration(
                         hintText: "Enter Personal No.",
                         hintStyle: TextStyle(color: Color(0xFF1467B3)),
@@ -56,35 +60,29 @@ class _DeleteEmployeeState extends State<DeleteEmployee> {
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color:
-                                    Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
-                            ),
+                                Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
+                        ),
                       ),
                     ),
                     Hero(
                       tag: "1",
                       child: Container(
-                        margin: EdgeInsets.all(5),
+                        margin: EdgeInsets.all(10),
                         child: Card(
-                          elevation:5,
                           child: InkWell(
                             splashColor: Colors.blue.withAlpha(30),
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => InvalidPersonalNo()),
-                              );
-                              print("Invalid PersonalNo");
+                              /**/
                             },
                             child: Container(
                               height: 250,
                               margin:
-                                  EdgeInsets.only(top: 10, left: 10, right: 10,bottom: 15),
+                              EdgeInsets.only(top: 10, left: 10, right: 10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                               ),
                               child: Column(
-                                // padding: EdgeInsets.only(left: 5, top: 10),
+                                //padding: EdgeInsets.only(left: 5, top: 10),
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -170,10 +168,14 @@ class _DeleteEmployeeState extends State<DeleteEmployee> {
                         padding: EdgeInsets.all(8.0),
                         splashColor: Colors.blueAccent,
                         onPressed: () {
-                          /*...*/
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditEmpProfile()),
+                          );
                         },
                         child: Text(
-                          "Delete",
+                          "Edit",
                           style: TextStyle(fontSize: 15.0),
                         ),
                       ),
