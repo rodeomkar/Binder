@@ -20,9 +20,15 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  // authLevel = 0 <=> Maintenance operator irrespective of department
+  final List _maintenanceOperatorScreenList = [
+    myComplaintsMaintenance(),
+    profile(),
+  ];
+
   // authLevel = 1 <=> Any operator irrespective of department
-  final List _operatorScreenList = [
-    myComplaints(),
+  final List _productionOperatorScreenList = [
+    myComplaintsProduction(),
     profile(),
   ];
 
@@ -35,7 +41,7 @@ class _HomepageState extends State<Homepage> {
 
   //authLevel = 3 <=> Production Supervisor
   final List _productionSupervisorList = [
-    myComplaints(),
+    myComplaintsProduction(),
     productionDeptComplaints(),
     statistics(),
     profile(),
@@ -49,7 +55,8 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.authLevel == 1 ? _operatorScreenList[currentIndex] :
+      body: widget.authLevel == 0 ? _maintenanceOperatorScreenList[currentIndex] :
+      widget.authLevel == 1 ? _productionOperatorScreenList[currentIndex] :
       widget.authLevel == 2 ? _maintenanceSupervisorList[currentIndex] :
       widget.authLevel == 3 ? _productionSupervisorList[currentIndex] :
       widget.authLevel == 4 ?_systemAdmin[currentIndex] : null,

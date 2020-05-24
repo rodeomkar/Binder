@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 Color primaryblue = Color(0xFF1467B3);
 Color navbg = Color(0xFF110A88);
 Color fadeblue = Color.fromRGBO(20, 103, 179, 0.05);
+Color complaintStatus = Color(0xFFFF5656);
+
 String appBarTitle="";
 
 class getAppBarTitle extends StatelessWidget {
@@ -31,4 +33,11 @@ TextStyle blueSmallStyle = TextStyle(
     color: primaryblue,
     fontSize: 14,
     fontWeight: FontWeight.w400
+);
+
+TextStyle titleText = TextStyle(
+    fontFamily: 'Roboto',
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: FontWeight.w500
 );
