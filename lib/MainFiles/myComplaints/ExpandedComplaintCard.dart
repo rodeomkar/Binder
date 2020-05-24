@@ -181,7 +181,11 @@ class _ExpandedComplaintCardState extends State<ExpandedComplaintCard> {
                           new Radio(
                             value: ComplaintVerificationStatus.solved,
                             groupValue: _status,
-                            //onChanged: _handleRadioValueChange1,
+                            onChanged: (ComplaintVerificationStatus value){
+                              setState(() {
+                                _status = value;
+                              });
+                            },
                           ),
                           new Text(
                             'Solved',
