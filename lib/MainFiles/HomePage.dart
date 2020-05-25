@@ -9,58 +9,67 @@ import 'package:tmapp/ReusableWidgets/themes.dart';
 class Homepage extends StatefulWidget {
 
   final int authLevel;
+  final String userDepartment;
 
   const Homepage({
     Key key,
     @ required this.authLevel,
+    @required this.userDepartment
   }) : super(key: key);
+
 
   @override
   _HomepageState createState() => _HomepageState();
 }
 
 class _HomepageState extends State<Homepage> {
-  // authLevel = 0 <=> Maintenance operator irrespective of department
-  final List _maintenanceOperatorScreenList = [
-    myComplaintsMaintenance(),
+
+  // widget.authLevel == 0 && widget.userDepartment == "maintenance" <=> Maintenance operator
+  List<Widget> _maintenanceOperatorScreenList() => [
+    myComplaints(),
     profile(),
   ];
 
-  // authLevel = 1 <=> Any operator irrespective of department
-  final List _productionOperatorScreenList = [
-    myComplaintsProduction(),
-    profile(),
-  ];
-
-  //authLevel = 2 <=> Maintenance Supervisor
-  final List _maintenanceSupervisorList = [
+  //widget.authLevel == 1  && widget.userDepartment  == "maintenance" <=> Maintenance Supervisor
+  List<Widget> _maintenanceSupervisorScreenList() => [
     maintenanceDeptComplaints(),
     statistics(),
     profile(),
   ];
 
-  //authLevel = 3 <=> Production Supervisor
-  final List _productionSupervisorList = [
-    myComplaintsProduction(),
+  // widget.authLevel == 0 && widget.userDepartment == "production" <=> Production operator
+  List<Widget> _productionOperatorScreenList() => [
+    myComplaints(userDepartment: widget.userDepartment, authLevel: widget.authLevel,),
+    profile(),
+  ];
+
+  //widget.authLevel == 1 && widget.userDepartment = "production" <=> Production Supervisor
+  List<Widget> _productionSupervisorScreenList() => [
+    myComplaints(),
     productionDeptComplaints(),
     statistics(),
     profile(),
   ];
 
-  //authLevel = 4 <=> System Admin
-  final List _systemAdmin = [];
+  //widget.authLevel == 2 && userDepartment == "admin" <=> System Admin
+  List<Widget> _systemAdminScreenList() => [];
 
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> productionOperatorScreenList = _productionOperatorScreenList();
+    final List<Widget> maintenanceOperatorScreenList = _maintenanceOperatorScreenList();
+    final List<Widget> productionSupervisorScreenList = _productionSupervisorScreenList();
+    final List<Widget> maintenanceSupervisorScreenList = _maintenanceSupervisorScreenList();
+    final List<Widget> systemAdminScreenList = _systemAdminScreenList();
     return Scaffold(
-      body: widget.authLevel == 0 ? _maintenanceOperatorScreenList[currentIndex] :
-      widget.authLevel == 1 ? _productionOperatorScreenList[currentIndex] :
-      widget.authLevel == 2 ? _maintenanceSupervisorList[currentIndex] :
-      widget.authLevel == 3 ? _productionSupervisorList[currentIndex] :
-      widget.authLevel == 4 ?_systemAdmin[currentIndex] : null,
-      bottomNavigationBar: widget.authLevel == 1 ? BottomNavyBar(
+      body: (widget.authLevel == 0 && widget.userDepartment == "maintenance") ? maintenanceOperatorScreenList[currentIndex] :
+      (widget.authLevel == 0 && widget.userDepartment == "production") ? productionOperatorScreenList[currentIndex] :
+      (widget.authLevel == 1  && widget.userDepartment  == "maintenance") ? maintenanceSupervisorScreenList[currentIndex] :
+      (widget.authLevel == 1 && widget.userDepartment == "production") ? productionSupervisorScreenList[currentIndex] :
+      (widget.authLevel == 2 && widget.userDepartment == "admin") ? systemAdminScreenList[currentIndex] : null,
+      bottomNavigationBar: (widget.authLevel == 0 && widget.userDepartment == "maintenance") == true ? BottomNavyBar(
         selectedIndex: currentIndex,
         showElevation: true,
         itemCornerRadius: 10,
@@ -72,18 +81,20 @@ class _HomepageState extends State<Homepage> {
           BottomNavyBarItem(
             icon: Icon(Icons.message),
             title: Text('Complaints'),
-            activeColor: Colors.white,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.account_circle),
             title: Text('Profile'),
-            activeColor: Colors.white,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
         ],
       ) :
-      widget.authLevel == 2 ? BottomNavyBar(
+      (widget.authLevel == 1 && widget.userDepartment == "maintenance") == true ? BottomNavyBar(
         selectedIndex: currentIndex,
         showElevation: true,
         itemCornerRadius: 10,
@@ -96,27 +107,27 @@ class _HomepageState extends State<Homepage> {
           BottomNavyBarItem(
             icon: Icon(Icons.account_balance),
             title: Text('Department'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.assessment),
             title: Text('Statistics'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.account_circle),
             title: Text('Profile'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
         ],
       ) :
-      widget.authLevel == 3 ? BottomNavyBar(
+      (widget.authLevel == 0 && widget.userDepartment == "production") == true ? BottomNavyBar(
         selectedIndex: currentIndex,
         showElevation: true,
         itemCornerRadius: 10,
@@ -128,34 +139,59 @@ class _HomepageState extends State<Homepage> {
           BottomNavyBarItem(
             icon: Icon(Icons.message),
             title: Text('Complaints'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.account_balance),
-            title: Text('Department'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.assessment),
-            title: Text('Statistics'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.account_circle),
             title: Text('Profile'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
         ],
       ) :
-      widget.authLevel == 4 ? BottomNavyBar(
+      (widget.authLevel == 1 && widget.userDepartment == "production") == true ? BottomNavyBar(
+        selectedIndex: currentIndex,
+        showElevation: true,
+        itemCornerRadius: 10,
+        curve: Curves.easeInBack,
+        onItemSelected: (index) => setState(() {
+          currentIndex = index;
+        }),
+        items: [
+          BottomNavyBarItem(
+            icon: Icon(Icons.message),
+            title: Text('Complaints'),
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.account_balance),
+            title: Text('Department'),
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.assessment),
+            title: Text('Statistics'),
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.account_circle),
+            title: Text('Profile'),
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ) :
+      (widget.authLevel == 2 && widget.userDepartment == "admin") == true ? BottomNavyBar(
         selectedIndex: currentIndex,
         showElevation: true,
         itemCornerRadius: 10,
@@ -168,15 +204,15 @@ class _HomepageState extends State<Homepage> {
           BottomNavyBarItem(
             icon: Icon(Icons.home),
             title: Text('Home'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.account_circle),
             title: Text('Profile'),
-            activeColor: Colors.white,
-            inactiveColor: primaryblue,
+            activeColor: primaryblue,
+            inactiveColor: Colors.white,
             textAlign: TextAlign.center,
           ),
         ],

@@ -5,10 +5,12 @@ import 'package:tmapp/ReusableWidgets/themes.dart';
 class CustomComplaintCard extends StatefulWidget {
 
   final int complaintNo;
+  final String userDepartment;
 
   const CustomComplaintCard({
     Key key,
-    @required this.complaintNo
+    @required this.complaintNo,
+    @required this.userDepartment
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class _CustomComplaintCardState extends State<CustomComplaintCard> {
             setState(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ExpandedComplaintCard(complaintNo: widget.complaintNo,)),
+                MaterialPageRoute(builder: (context) => ExpandedComplainVerify(complaintNo: widget.complaintNo,)),
               );
             });
           },
@@ -34,7 +36,7 @@ class _CustomComplaintCardState extends State<CustomComplaintCard> {
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                     color: Colors.grey,

@@ -40,7 +40,7 @@ class BottomNavyBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = navbg;
+    final bgColor = primaryblue;
 
     return Container(
       decoration: BoxDecoration(
@@ -124,7 +124,7 @@ class _ItemWidget extends StatelessWidget {
         curve: curve,
         decoration: BoxDecoration(
           color:
-              isSelected ? Color(0xFF11009F) : backgroundColor,
+              isSelected ? Colors.white : backgroundColor,
           borderRadius: BorderRadius.circular(itemCornerRadius),
         ),
         child: SingleChildScrollView(

@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String uname = "", pass = "";
+  String personal_Id = "", pass = "";
   bool _showPassword = false;
 
   @override
@@ -73,10 +73,10 @@ class _LoginState extends State<Login> {
                   width: double.infinity,
                   child: TextField(
                     onChanged: (String text) {
-                      uname = text;
+                      personal_Id = text;
                     },
                     onSubmitted: (String text) {
-                      uname = text;
+                      personal_Id = text;
                     },
                     decoration: InputDecoration(
                         filled: true,
@@ -105,16 +105,16 @@ class _LoginState extends State<Login> {
                     },
                     onSubmitted: (String text) {
                       pass = text;
-                      if(uname == "1" && pass == "1"){
+                      if(personal_Id == "1" && pass == "1"){
                         Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 1)));
                       }
-                      else if(uname == "2" && pass == "2"){
+                      else if(personal_Id == "2" && pass == "2"){
                         Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 2)));
                       }
-                      else if(uname == "3" && pass == "3"){
+                      else if(personal_Id == "3" && pass == "3"){
                         Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 3)));
                       }
-                      else if(uname == "4" && pass == "4"){
+                      else if(personal_Id == "4" && pass == "4"){
                         Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 4)));
                       }
                       else{
@@ -182,17 +182,16 @@ class _LoginState extends State<Login> {
                       ),
                       onPressed: (){
                         setState(() {
-                          if(uname == "1" && pass == "1"){
-                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 1)));
-                          }
-                          else if(uname == "2" && pass == "2"){
-                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 2)));
-                          }
-                          else if(uname == "3" && pass == "3"){
-                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 3)));
-                          }
-                          else if(uname == "4" && pass == "4"){
-                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 4)));
+                          if(personal_Id == "production0" && pass == "production0"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 0, userDepartment: "production",)));
+                          }else if(personal_Id == "production1" && pass == "production1"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 1, userDepartment: "production",)));
+                          }else if(personal_Id == "maintenance0" && pass == "maintenance0"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 0, userDepartment: "maintenance",)));
+                          }else if(personal_Id == "maintenance1" && pass == "maintenance1"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 1, userDepartment: "maintenance",)));
+                          }else if(personal_Id == "admin" && pass == "admin"){
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: Homepage(authLevel: 2, userDepartment: "admin",)));
                           }
                           else{
                             Scaffold.of(context).showSnackBar(

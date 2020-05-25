@@ -7,12 +7,24 @@ import 'package:tmapp/ReusableWidgets/themes.dart';
 
 import 'CustomComplaintCard.dart';
 
-class myComplaintsProduction extends StatefulWidget {
+// ignore: camel_case_types
+class myComplaints extends StatefulWidget {
+
+  final int authLevel;
+  final String userDepartment;
+
+  const myComplaints({
+    Key key,
+    @required this.authLevel,
+    @required this.userDepartment
+  }) : super(key: key);
+
   @override
-  _myComplaintsProductionState createState() => _myComplaintsProductionState();
+  _myComplaintsState createState() => _myComplaintsState();
 }
 
-class _myComplaintsProductionState extends State<myComplaintsProduction> {
+// ignore: camel_case_types
+class _myComplaintsState extends State<myComplaints> {
   final List<int> complaintNo = [1,2,3,4,5,6];
 
   Future<bool> _onbackpressed() {
@@ -48,7 +60,7 @@ class _myComplaintsProductionState extends State<myComplaintsProduction> {
             return CustomComplaintCard(complaintNo: complaintNo[index],);
           },
           separatorBuilder: (BuildContext context, int index) => SizedBox(
-            height: 20,
+            height: 18.0,
           ),
         ),
       ),
@@ -56,15 +68,3 @@ class _myComplaintsProductionState extends State<myComplaintsProduction> {
   }
 }
 
-class myComplaintsMaintenance extends StatefulWidget {
-  @override
-  _myComplaintsMaintenanceState createState() =>
-      _myComplaintsMaintenanceState();
-}
-
-class _myComplaintsMaintenanceState extends State<myComplaintsMaintenance> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
