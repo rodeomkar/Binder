@@ -13,7 +13,7 @@ class Homepage extends StatefulWidget {
 
   const Homepage({
     Key key,
-    @ required this.authLevel,
+    @required this.authLevel,
     @required this.userDepartment
   }) : super(key: key);
 
@@ -26,7 +26,7 @@ class _HomepageState extends State<Homepage> {
 
   // widget.authLevel == 0 && widget.userDepartment == "maintenance" <=> Maintenance operator
   List<Widget> _maintenanceOperatorScreenList() => [
-    myComplaints(),
+    myComplaints(userDepartment: widget.userDepartment, authLevel: widget.authLevel,),
     profile(),
   ];
 
@@ -45,7 +45,7 @@ class _HomepageState extends State<Homepage> {
 
   //widget.authLevel == 1 && widget.userDepartment = "production" <=> Production Supervisor
   List<Widget> _productionSupervisorScreenList() => [
-    myComplaints(),
+    myComplaints(userDepartment: widget.userDepartment, authLevel: widget.authLevel,),
     productionDeptComplaints(),
     statistics(),
     profile(),
@@ -58,11 +58,13 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+
     final List<Widget> productionOperatorScreenList = _productionOperatorScreenList();
     final List<Widget> maintenanceOperatorScreenList = _maintenanceOperatorScreenList();
     final List<Widget> productionSupervisorScreenList = _productionSupervisorScreenList();
     final List<Widget> maintenanceSupervisorScreenList = _maintenanceSupervisorScreenList();
     final List<Widget> systemAdminScreenList = _systemAdminScreenList();
+
     return Scaffold(
       body: (widget.authLevel == 0 && widget.userDepartment == "maintenance") ? maintenanceOperatorScreenList[currentIndex] :
       (widget.authLevel == 0 && widget.userDepartment == "production") ? productionOperatorScreenList[currentIndex] :

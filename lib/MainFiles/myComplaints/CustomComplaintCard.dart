@@ -28,7 +28,7 @@ class _CustomComplaintCardState extends State<CustomComplaintCard> {
             setState(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ExpandedComplainVerify(complaintNo: widget.complaintNo,)),
+                MaterialPageRoute(builder: (context) => ExpandedComplaintAssign(complaintNo: widget.complaintNo,)),
               );
             });
           },

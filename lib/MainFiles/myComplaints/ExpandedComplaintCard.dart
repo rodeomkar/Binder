@@ -1,3 +1,4 @@
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:tmapp/ReusableWidgets/CustomAppBar.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
@@ -11,13 +12,12 @@ class ExpandedComplainVerify extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ExpandedComplainVerifyState createState() =>
-      _ExpandedComplainVerifyState();
+  _ExpandedComplainVerifyState createState() => _ExpandedComplainVerifyState();
 }
 
-class _ExpandedComplainVerifyState
-    extends State<ExpandedComplainVerify> {
-  ComplaintVerificationValue _radioVerifyValue = ComplaintVerificationValue.unsolved;
+class _ExpandedComplainVerifyState extends State<ExpandedComplainVerify> {
+  ComplaintVerificationValue _radioVerifyValue =
+      ComplaintVerificationValue.unsolved;
   TextStyle detailsTextStyle =
       TextStyle(fontFamily: 'Roboto', color: Colors.black, fontSize: 14);
 
@@ -253,20 +253,18 @@ class _ExpandedComplainVerifyState
 * */
 
 enum ComplaintStatusValue { solved, ongoing, pending, transferAME }
+
 class ExpandedComplainStatus extends StatefulWidget {
   final int complaintNo;
 
-  const ExpandedComplainStatus(
-      {Key key, @required this.complaintNo})
+  const ExpandedComplainStatus({Key key, @required this.complaintNo})
       : super(key: key);
 
   @override
-  _ExpandedComplainStatusState createState() =>
-      _ExpandedComplainStatusState();
+  _ExpandedComplainStatusState createState() => _ExpandedComplainStatusState();
 }
 
-class _ExpandedComplainStatusState
-    extends State<ExpandedComplainStatus> {
+class _ExpandedComplainStatusState extends State<ExpandedComplainStatus> {
   ComplaintStatusValue _radioStatusValue = ComplaintStatusValue.pending;
   TextStyle detailsTextStyle =
       TextStyle(fontFamily: 'Roboto', color: Colors.black, fontSize: 14);
@@ -542,19 +540,42 @@ class _ExpandedComplainStatusState
 class ExpandedComplaintAssign extends StatefulWidget {
   final int complaintNo;
 
-  const ExpandedComplaintAssign(
-      {Key key, @required this.complaintNo})
+  const ExpandedComplaintAssign({Key key, @required this.complaintNo})
       : super(key: key);
 
-
   @override
-  _ExpandedComplaintAssignState createState() => _ExpandedComplaintAssignState();
+  _ExpandedComplaintAssignState createState() =>
+      _ExpandedComplaintAssignState();
 }
 
 class _ExpandedComplaintAssignState extends State<ExpandedComplaintAssign> {
-
   TextStyle detailsTextStyle =
-  TextStyle(fontFamily: 'Roboto', color: Colors.black, fontSize: 14);
+      TextStyle(fontFamily: 'Roboto', color: Colors.black, fontSize: 14);
+
+  GlobalKey<AutoCompleteTextFieldState<String>> key = new GlobalKey();
+  String currentName = "";
+  List<String> assignedTo = [];
+
+  List<String> suggestions = [
+    "Bhusnur Dattatray Prakash",
+    "Jagdale Rajan Yadav",
+    "Sargar Ramchandra Sopan",
+    "Kachare Bharat Sampati",
+    "Dixit Sharad Rajaram",
+    "Awale Vishwanth Bhairu",
+    "Gokule Suresh Devram",
+    "Kandelkar Narayan Tukaram",
+    "Kawade Chandrakant Ekanath",
+    "Shinde Ajit Dashrath",
+    "Jamdade Ravindra Anantrao",
+    "Shendkar Vijay Mhaskoo",
+    "Malusare Atmaram Krishna",
+    "Lanke Kiran S.",
+    "Kotasthane Kedar k.",
+    "Mathkar Mahesh M."
+  ];
+  AutoCompleteTextField searchTextField;
+  bool loading = true;
 
   @override
   Widget build(BuildContext context) {
@@ -690,6 +711,94 @@ class _ExpandedComplaintAssignState extends State<ExpandedComplaintAssign> {
                 SizedBox(
                   height: 15,
                 ),
+                Card(
+                  margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.topLeft,
+                        padding: EdgeInsets.only(top: 20, left: 20),
+                        child: Text("Assign Operator",
+                            style: TextStyle(
+                                fontFamily: 'Roboto',
+                                color: Color(0xFF1467B3),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500)),
+                      ),
+                      SizedBox(height: 20,),
+
+                      Container(
+                        height: 50,
+                        padding: EdgeInsets.only(left: 20,right: 20),
+                        child: AutoCompleteTextField<String>(
+                          key: key,
+                          clearOnSubmit: false,
+                          suggestions: suggestions,
+                          style: TextStyle(color: Color(0xFF1467B3),fontSize: 14),
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFF1467B3))
+                              ),
+                              contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 20),
+                              hintText: "Search",
+                              hintStyle: TextStyle(color: Color(0xFF1467B3),fontSize: 18)
+                          ),
+                          itemFilter: (item,query){
+                            return item.toLowerCase().startsWith(query.toLowerCase());
+                          },
+                          itemSorter: (a,b){
+                            return a.compareTo(b);
+                          },
+                          itemSubmitted: (item){
+                            setState(() {
+                              searchTextField.textField.controller.text = item;
+                              print(item);
+                              currentName = item;
+                            });
+
+                          },
+                          itemBuilder: (context,item){
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  item,style: TextStyle(fontSize: 18,color: Colors.black,fontFamily: "Roboto"),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        //padding:EdgeInsets.only(top: 400,left:20,right: 20) ,
+                        child: new SizedBox(
+                          //width: double.infinity,
+                          child: new RaisedButton(
+                            child: new Text(
+                              "Assign",
+                              style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                  fontSize: 16),
+                              textAlign: TextAlign.center,
+                            ),
+                            color: Color(0xFF1467B3),
+                            onPressed: () {
+                              currentName != "" ? assignedTo.add(currentName) : null;
+                              print(assignedTo[0]);
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
