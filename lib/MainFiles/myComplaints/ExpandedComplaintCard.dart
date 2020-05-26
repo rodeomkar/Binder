@@ -1,4 +1,5 @@
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tmapp/ReusableWidgets/CustomAppBar.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
@@ -576,6 +577,8 @@ class _ExpandedComplaintAssignState extends State<ExpandedComplaintAssign> {
   ];
   AutoCompleteTextField searchTextField;
   bool loading = true;
+  List<String> assign = [];
+  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -712,7 +715,7 @@ class _ExpandedComplaintAssignState extends State<ExpandedComplaintAssign> {
                   height: 15,
                 ),
                 Card(
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                  //margin: EdgeInsets.only(left: 20, right: 20, top: 10),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
@@ -727,53 +730,93 @@ class _ExpandedComplaintAssignState extends State<ExpandedComplaintAssign> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500)),
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(
+                        height: 20,
+                      ),
 
                       Container(
                         height: 50,
-                        padding: EdgeInsets.only(left: 20,right: 20),
+                        padding: EdgeInsets.only(left: 20, right: 20),
                         child: AutoCompleteTextField<String>(
                           key: key,
                           clearOnSubmit: false,
                           suggestions: suggestions,
-                          style: TextStyle(color: Color(0xFF1467B3),fontSize: 14),
+                          style:
+                              TextStyle(color: Color(0xFF1467B3), fontSize: 14),
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFF1467B3))
-                              ),
-                              contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 20),
+                                  borderSide:
+                                      BorderSide(color: Color(0xFF1467B3))),
+                              contentPadding:
+                                  EdgeInsets.fromLTRB(10, 10, 10, 20),
                               hintText: "Search",
-                              hintStyle: TextStyle(color: Color(0xFF1467B3),fontSize: 18)
-                          ),
-                          itemFilter: (item,query){
-                            return item.toLowerCase().startsWith(query.toLowerCase());
+                              hintStyle: TextStyle(
+                                  color: Color(0xFF1467B3), fontSize: 18)),
+                          itemFilter: (item, query) {
+                            return item
+                                .toLowerCase()
+                                .startsWith(query.toLowerCase());
                           },
-                          itemSorter: (a,b){
+                          itemSorter: (a, b) {
                             return a.compareTo(b);
                           },
-                          itemSubmitted: (item){
+                          itemSubmitted: (item) {
                             setState(() {
                               searchTextField.textField.controller.text = item;
                               print(item);
                               currentName = item;
                             });
-
                           },
-                          itemBuilder: (context,item){
+                          itemBuilder: (context, item) {
                             return Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text(
-                                  item,style: TextStyle(fontSize: 18,color: Colors.black,fontFamily: "Roboto"),
+                                  item,
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.black,
+                                      fontFamily: "Roboto"),
                                 ),
                               ],
                             );
                           },
+                          controller: myController,
                         ),
                       ),
                       SizedBox(height: 10),
                       Container(
-                        //padding:EdgeInsets.only(top: 400,left:20,right: 20) ,
+                        alignment: Alignment.topLeft,
+                        margin: EdgeInsets.only(left: 20),
+                        child: Wrap(
+                          spacing: 6.0,
+                          //runSpacing: 6.0,
+                          children:
+                              List<Widget>.generate(assign.length, (int index) {
+                            return InputChip(
+                              avatar: CircleAvatar(
+                                backgroundColor: Color(0xFF1467B3),
+                                child: Text(assign[index][0]),
+                              ),
+                              deleteIcon: Icon(Icons.cancel),
+                              onDeleted: (){
+                                setState(() {
+                                  assign.removeAt(index);
+                                });
+                              },
+                              deleteIconColor: Colors.grey,
+                              label: Text(assign[index]),
+                              onPressed: () {
+                              },
+                            );
+                          }),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
                         child: new SizedBox(
                           //width: double.infinity,
                           child: new RaisedButton(
@@ -787,15 +830,17 @@ class _ExpandedComplaintAssignState extends State<ExpandedComplaintAssign> {
                             ),
                             color: Color(0xFF1467B3),
                             onPressed: () {
-                              currentName != "" ? assignedTo.add(currentName) : null;
-                              print(assignedTo[0]);
+//                              currentName != ""
+//                                  ? assignedTo.add(currentName)
+//                                  : null;
+//                              print(assignedTo[0]);
+                              assign.add(myController.text);
+                              print(assign);
+                              setState(() { });
                             },
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      )
                     ],
                   ),
                 )
