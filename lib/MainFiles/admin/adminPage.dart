@@ -227,7 +227,7 @@ class _AdminMainState extends State<AdminMain> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => UserProfileAdmin()),
+                              builder: (context) => ManageAdmin()),
                         );
                       },
                       child: Container(

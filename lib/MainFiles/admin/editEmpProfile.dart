@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tmapp/ReusableWidgets/CustomAppBar.dart';
+import 'package:tmapp/ReusableWidgets/themes.dart';
 import 'dart:io';
 
 import 'editSearchEmp.dart';
@@ -38,39 +40,17 @@ class _EditEmpProfileState extends State<EditEmpProfile> {
     "Temporary Operator",
   ];
 
-  Future<bool> _onbackpressed() {
-    return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: new Text('Are you sure?'),
-              content: new Text('Do you want to exit the App?'),
-              actions: <Widget>[
-                OutlineButton(
-                  child: Text('Yes'),
-                  onPressed: () => exit(0),
-                ),
-                OutlineButton(
-                  child: Text('No'),
-                  onPressed: () => Navigator.pop(context, false),
-                )
-              ],
-            ));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      appBar: AppBar(
-        automaticallyImplyLeading: false, // hides leading widget
-        title: Text("Edit an employee",
-            style: TextStyle(
-                fontFamily: 'Roboto',
-                color: Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.w500)),
-        centerTitle: true,
-        backgroundColor: Color(0xFF1467B3),
+      appBar: CustomAppBar(
+        child: Text(
+          'Edit an employee',
+          style: titleText,
+        ),
+        backIcon: true,
+        elevation: true,
       ),
       body: SingleChildScrollView(
         child: Container(

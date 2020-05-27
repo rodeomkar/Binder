@@ -3,12 +3,12 @@ import 'package:tmapp/systemadmin/homepageadmin.dart';
 
 import 'resetPasswordAdmin.dart';
 
-class UserProfileAdmin extends StatefulWidget {
+class ManageAdmin extends StatefulWidget {
   @override
-  _UserProfileAdminState createState() => _UserProfileAdminState();
+  _ManageAdminState createState() => _ManageAdminState();
 }
 
-class _UserProfileAdminState extends State<UserProfileAdmin> {
+class _ManageAdminState extends State<ManageAdmin> {
   String _email;
   Future<bool> _onBackPressed() {
     Navigator.push(
@@ -19,8 +19,8 @@ class _UserProfileAdminState extends State<UserProfileAdmin> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _onBackPressed,
+    return Hero(
+      tag: 'ManageAdmin',
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF1467B3),

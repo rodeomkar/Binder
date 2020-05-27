@@ -33,8 +33,8 @@ class _EditSearchEmpState extends State<EditSearchEmp> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _onbackpressed,
+    return Hero(
+      tag: 'EditEmployeeAdmin',
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false, // hides leading widget
