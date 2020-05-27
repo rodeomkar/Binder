@@ -3,8 +3,10 @@ import 'package:tmapp/LoginFiles/LoginMain.dart';
 import 'package:tmapp/MainFiles/HomePage.dart';
 import 'package:tmapp/maintainenceoperator/updatestatus.dart';
 import 'package:tmapp/productionoperator/firstop.dart';
+import 'package:tmapp/systemadmin/firstadmin.dart';
 
 import 'LoginFiles/LoginMain.dart';
+import 'MainFiles/admin/adminPage.dart';
 import 'maintainenceoperator/Firstmo.dart';
 import 'maintainenceoperator/listmo.dart';
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: AdminMain(),
     );
   }
 }

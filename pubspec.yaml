@@ -28,6 +28,7 @@ dependencies:
   page_transition: ^1.1.4
   pin_entry_text_field: ^0.1.4
   autocomplete_textfield: ^1.7.3
+  mdi: ^1.0.1
 
 dev_dependencies:
 

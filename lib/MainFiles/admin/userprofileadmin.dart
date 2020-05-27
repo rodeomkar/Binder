@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/ReusableWidgets/themes.dart';
-import 'package:tmapp/maintainenceoperator/resetpassmo.dart';
-import '../../ReusableWidgets/CustomAppBar.dart';
-class profile extends StatefulWidget {
+import 'package:tmapp/systemadmin/homepageadmin.dart';
+
+import 'resetPasswordAdmin.dart';
+
+class UserProfileAdmin extends StatefulWidget {
   @override
-  _ProfilemoState createState() => _ProfilemoState();
+  _UserProfileAdminState createState() => _UserProfileAdminState();
 }
-class _ProfilemoState extends State<profile> {
-  gotoSecondActivity(BuildContext context) {
+
+class _UserProfileAdminState extends State<UserProfileAdmin> {
+  String _email;
+  Future<bool> _onBackPressed() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ResetPassmo()),
+      MaterialPageRoute(builder: (context) => HomePageAdmin()),
     );
   }
-  Future<bool> _onBackPressed() {
-    Navigator.pop(context);
-  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onBackPressed,
       child: Scaffold(
-        appBar: CustomAppBar(backIcon: false, child: Text('Profile',style: titleText,)),
+        appBar: AppBar(
+          backgroundColor: Color(0xFF1467B3),
+          title: Image.asset('Logo/LogoWhite/logoFullWhite.png',
+              fit: BoxFit.cover, height: 28),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+        ),
         body: SingleChildScrollView(
           child: Container(
             child: Padding(
@@ -30,8 +37,19 @@ class _ProfilemoState extends State<profile> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Container(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'User Profile',
+                        style: TextStyle(
+                            color: Color(0xFF1467B3),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Roboto"),
+                      ),
+                    ),
                     SizedBox(
-                      height: 15,
+                      height: 20,
                     ),
                     TextField(
                       enabled: false,
@@ -100,9 +118,9 @@ class _ProfilemoState extends State<profile> {
                       height: 20,
                     ),
                     TextField(
-                      enabled: false,
                       decoration: InputDecoration(
                         hintText: "Phone Number",
+                        hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding: const EdgeInsets.only(
@@ -116,15 +134,20 @@ class _ProfilemoState extends State<profile> {
                                 color:
                                     Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
                             ),
+                        suffixIcon: const Icon(
+                          Icons.edit,
+                          color: Color(0xFF1467B3),
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     TextFormField(
-                      enabled: false,
+                      autovalidate: true,
                       decoration: InputDecoration(
                         hintText: "Email ID",
+                        hintStyle: TextStyle(color: Color(0xFF1467B3)),
                         filled: true,
                         fillColor: Color.fromRGBO(20, 103, 179, 0.05),
                         contentPadding: const EdgeInsets.only(
@@ -139,10 +162,17 @@ class _ProfilemoState extends State<profile> {
                                 color:
                                     Color.fromRGBO(223, 232, 247, 100)) //dfe8f7
                             ),
+                        suffixIcon: const Icon(
+                          Icons.edit,
+                          color: Color(0xFF1467B3),
+                        ),
                       ),
+                      validator: (input) =>
+                          !input.contains('@') ? 'Not a valid email' : null,
+                      onSaved: (input) => _email = input,
                     ),
                     SizedBox(
-                      height: 35,
+                      height: 30,
                     ),
                     SizedBox(
                       width: 400,
@@ -155,12 +185,38 @@ class _ProfilemoState extends State<profile> {
                         padding: EdgeInsets.all(8.0),
                         splashColor: Colors.blueAccent,
                         onPressed: () {
-                          gotoSecondActivity(context);
+                          /*...*/
+                        },
+                        child: Text(
+                          "Save Changes",
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      width: 400,
+                      height: 45,
+                      child: OutlineButton(
+                        textColor: Color(0xFF1666f0),
+                        disabledTextColor: Colors.black,
+                        padding: EdgeInsets.all(8.0),
+                        splashColor: Colors.blueAccent,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ResetPasswordAdmin()),
+                          );
                         },
                         child: Text(
                           "Reset Password",
-                          style: TextStyle(fontSize: 15.0),
+                          style: TextStyle(
+                              fontSize: 15.0, color: Color(0xFF1467B3)),
                         ),
+                        borderSide: BorderSide(color: Color(0xFF1467B3)),
                       ),
                     ),
                     SizedBox(
@@ -182,7 +238,7 @@ class _ProfilemoState extends State<profile> {
                         padding: EdgeInsets.all(8.0),
                         splashColor: Colors.blueAccent,
                         onPressed: () {
-                          /*...*/
+                          /***/
                         },
                         borderSide: BorderSide(color: Color(0xFF1467B3)),
                         child: Text(
