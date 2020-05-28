@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tmapp/ReusableWidgets/themes.dart';
 import 'dart:io';
 
 import 'package:tmapp/systemadmin/deleteemployee.dart';
@@ -78,21 +79,25 @@ class _InvalidPersonalNoState extends State<InvalidPersonalNo> {
                       child: Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.all(10),
-                        child: Column(
+                        child: Stack(
                           children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.all(25),
-                              child: Image.asset(
-                                  'assets/images/InvalidPersonalNo.png',
-                                  height: 50,
-                                  fit: BoxFit.cover),
+                            Align(
+                              child: Container(
+                                child: Image.asset(
+                                    'assets/images/InvalidPersonalNo.png',
+                                    height: 50,
+                                    fit: BoxFit.cover),
+                              ),
+                              alignment: Alignment.center,
                             ),
-                            Container(
-                              margin: EdgeInsets.only(top: 20),
-                              child: Text(
-                                "Invalid Personal No",
-                                style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xFF1467B3)),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                child: Text(
+                                  "Invalid Personal No",
+                                  style: TextStyle(
+                                      fontSize: 15.0, color: primaryblue),
+                                ),
                               ),
                             ),
                           ],

@@ -8,7 +8,7 @@ import 'package:tmapp/systemadmin/deleteemployee.dart';
 import 'package:tmapp/systemadmin/firstadmin.dart';
 
 import 'LoginFiles/LoginMain.dart';
-import 'MainFiles/admin/adminPage.dart';
+import 'MainFiles/admin/adminMain.dart';
 import 'maintainenceoperator/Firstmo.dart';
 import 'maintainenceoperator/listmo.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DeleteEmployee(),
+      home: Login(),
     );
   }
 }

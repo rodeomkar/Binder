@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/MainFiles/admin/userprofileadmin.dart';
+import 'package:tmapp/MainFiles/admin/editEmpProfile.dart';
+import 'package:tmapp/MainFiles/admin/manageAdmin.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
 
 import 'addemployee.dart';
@@ -15,7 +16,7 @@ class _AdminMainState extends State<AdminMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: primaryblue,

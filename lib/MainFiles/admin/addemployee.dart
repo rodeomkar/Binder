@@ -47,7 +47,7 @@ class _AddEmployeeState extends State<AddEmployee> {
     return Hero(
       tag: 'AddEmployeeAdmin',
       child: Scaffold(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.white,
         appBar: CustomAppBar(
           child: Text(
               'Add an employee',
