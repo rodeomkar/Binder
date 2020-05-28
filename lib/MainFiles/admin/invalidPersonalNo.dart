@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tmapp/MainFiles/admin/deleteemployee.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
 import 'dart:io';
-
-import 'package:tmapp/systemadmin/deleteemployee.dart';
 
 class InvalidPersonalNo extends StatefulWidget {
   @override

@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tmapp/ReusableWidgets/CustomAppBar.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
-import 'package:tmapp/systemadmin/homepageadmin.dart';
 
 class AddEmployee extends StatefulWidget {
   @override
@@ -367,33 +366,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                         style: TextStyle(fontSize: 15.0),
                       ),
                     ),
-                  ), //Add Employee
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    width: 400,
-                    height: 45,
-                    child: OutlineButton(
-                      textColor: Color(0xFF1666f0),
-                      disabledTextColor: Colors.black,
-                      padding: EdgeInsets.all(8.0),
-                      splashColor: Colors.blueAccent,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePageAdmin()),
-                        );
-                      },
-                      child: Text(
-                        "Cancel",
-                        style: TextStyle(
-                            fontSize: 15.0, color: Color(0xFF1467B3)),
-                      ),
-                      borderSide: BorderSide(color: Color(0xFF1467B3)),
-                    ),
-                  ), //Cancel Button
+                  ), //Add Employee//Cancel Button
                 ],
               ),
             ),

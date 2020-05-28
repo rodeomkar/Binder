@@ -6,8 +6,6 @@ import 'package:tmapp/ReusableWidgets/FadeAnimation.dart';
 import 'package:tmapp/ReusableWidgets/CustomButton.dart';
 import 'package:tmapp/ReusableWidgets/CustomInputTextField.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
-import 'package:tmapp/productionsupervisor/first.dart';
-import 'package:tmapp/productionsupervisor/listcomp.dart';
 
 class Login extends StatefulWidget {
   @override

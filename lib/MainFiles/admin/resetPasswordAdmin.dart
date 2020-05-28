@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tmapp/ReusableWidgets/CustomAppBar.dart';
+import 'package:tmapp/ReusableWidgets/themes.dart';
 import 'dart:io';
-import 'package:tmapp/systemadmin/userprofileadmin.dart';
 
 import 'passwordFieldAdmin.dart';
 
@@ -19,12 +20,13 @@ class _ResetPasswordAdminState extends State<ResetPasswordAdmin> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFF1467B3),
-        title: Image.asset('Logo/LogoWhite/logoFullWhite.png',
-            fit: BoxFit.cover, height: 28),
-        centerTitle: true,
+      appBar: CustomAppBar(
+        child: Text(
+          'Add an employee',
+          style: titleText,
+        ),
+        backIcon: true,
+        elevation: true,
       ),
       body: Container(
         child: Padding(
@@ -100,31 +102,6 @@ class _ResetPasswordAdminState extends State<ResetPasswordAdmin> {
                       style: TextStyle(fontSize: 15.0),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: 400,
-                  height: 45,
-                  child: OutlineButton(
-                      textColor: Color(0xFF1666f0),
-                      disabledTextColor: Colors.black,
-                      padding: EdgeInsets.all(8.0),
-                      splashColor: Colors.blueAccent,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => UserProfileAdmin()),
-                        );
-                      },
-                      child: Text(
-                        "Cancel",
-                        style:
-                            TextStyle(fontSize: 15.0, color: Color(0xFF1467B3)),
-                      ),
-                      color: Color(0xFF1467B3)),
                 ),
               ],
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PasswordFieldmo extends StatefulWidget {
-  const PasswordFieldmo({
+class PasswordField extends StatefulWidget {
+  const PasswordField({
     this.fieldKey,
     this.hintText,
     this.labelText,
@@ -23,7 +23,7 @@ class PasswordFieldmo extends StatefulWidget {
   _PasswordFieldState createState() => new _PasswordFieldState();
 }
 
-class _PasswordFieldState extends State<PasswordFieldmo> {
+class _PasswordFieldState extends State<PasswordField> {
   bool _obscureText = true;
 
   @override

@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tmapp/MainFiles/admin/invalidPersonalNo.dart';
 import 'package:tmapp/ReusableWidgets/CustomAppBar.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
-import 'package:tmapp/systemadmin/homepageadmin.dart';
-import 'dart:io';
-import 'package:tmapp/systemadmin/invalidPersonalNo.dart';
 
 class DeleteEmployee extends StatefulWidget {
   @override

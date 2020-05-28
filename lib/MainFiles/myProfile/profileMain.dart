@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tmapp/ReusableWidgets/themes.dart';
-import 'package:tmapp/maintainenceoperator/resetpassmo.dart';
+import 'package:tmapp/MainFiles/myProfile/resetPass.dart';
 import '../../ReusableWidgets/CustomAppBar.dart';
 class profile extends StatefulWidget {
   @override

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tmapp/productionoperator/userprofileop.dart';
-import 'package:tmapp/productionoperator/passwordop.dart';
+import 'package:tmapp/MainFiles/myProfile/passwordmo.dart';
 
-class ResetPassop extends StatefulWidget {
+class ResetPassmo extends StatefulWidget {
   @override
-  _ResetPassState createState() => _ResetPassState();
+  _ResetPassmoState createState() => _ResetPassmoState();
 }
 
-class _ResetPassState extends State<ResetPassop> {
-
+class _ResetPassmoState extends State<ResetPassmo> {
   goBackToPreviousScreen(BuildContext context){
 
     Navigator.pop(context);
@@ -40,7 +38,7 @@ class _ResetPassState extends State<ResetPassop> {
                 SizedBox(
                   height: 15,
                 ),
-                PasswordFieldop(
+                PasswordField(
                   fieldKey: _passwordFieldKey,
                   hintText: 'Current Password',
                   onFieldSubmitted: (String value) {
@@ -52,7 +50,7 @@ class _ResetPassState extends State<ResetPassop> {
                 SizedBox(
                   height: 20,
                 ),
-                PasswordFieldop(
+                PasswordField(
                   fieldKey: _passwordFieldKey1,
                   hintText: 'Enter New Password',
                   onFieldSubmitted: (String value) {
@@ -64,7 +62,7 @@ class _ResetPassState extends State<ResetPassop> {
                 SizedBox(
                   height: 20,
                 ),
-                PasswordFieldop(
+                PasswordField(
                   fieldKey: _passwordFieldKey2,
                   hintText: 'Enter New Password',
                   onFieldSubmitted: (String value) {

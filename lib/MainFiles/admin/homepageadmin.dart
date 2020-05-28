@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:tmapp/MainFiles/admin/addemployee.dart';
+import 'package:tmapp/MainFiles/admin/deleteemployee.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:tmapp/systemadmin/addemployee.dart';
-import 'package:tmapp/systemadmin/deleteemployee.dart';
 
 import 'editSearchEmp.dart';
 
